@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
 
 ## Getting Started
 
@@ -20,10 +20,15 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## For us
-Everything flows from `app/page.js`, from there the layout applys a structure to it
+## Project Structure
+
+`/` / Landing Page route - `app/page.js`,
+`/contact` / Contact Page route - `app/contact/page.js`,
+`/services` / Services Page route - `app/services/page.js`,
+`/projects` / Project Page route - `app/projects/page.js`,
 
 ## Setup used
+
 - Javascript
 - NextJS
 - Tailwind CSS
