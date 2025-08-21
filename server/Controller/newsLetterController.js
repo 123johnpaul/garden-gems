@@ -1,4 +1,5 @@
 import initDB from "../database/db.js";
+import { sendEmail } from "../services/emailService.js";
 
 export async function subscribeNewsletter(req, res) {
   try {
@@ -17,7 +18,14 @@ export async function subscribeNewsletter(req, res) {
 
     await db.run("INSERT INTO newsletter (email) VALUES (?)", [email]);
 
-    // TODO: send confirmation email with nodemailer
+    // Send confirmation email
+    await sendEmail(
+      email,
+      "Garden Gems Newsletter Subscription ✅",
+      "Thank you for subscribing to the Garden Gems newsletter! 🌱"
+    );
+
+    // Respond back to client
     res.status(201).json({ message: "Subscription successful" });
   } catch (error) {
     if (error.message.includes("UNIQUE constraint failed")) {

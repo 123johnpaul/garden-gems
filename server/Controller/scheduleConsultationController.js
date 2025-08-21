@@ -1,10 +1,19 @@
 import initDB from "../database/db.js";
+import { sendEmail } from "../services/emailService.js";
 
 export async function scheduleConsultation(req, res) {
   try {
-    const { firstname, surname, middlename, phone, email, reservation_date } = req.body;
+    const { firstname, surname, middlename, phone, email, reservation_date } =
+      req.body;
 
-    if (!firstname || !surname || !middlename || !phone || !email || !reservation_date) {
+    if (
+      !firstname ||
+      !surname ||
+      !middlename ||
+      !phone ||
+      !email ||
+      !reservation_date
+    ) {
       return res.status(400).json({ error: "All fields are required" });
     }
 
@@ -21,7 +30,20 @@ export async function scheduleConsultation(req, res) {
       [firstname, surname, middlename, phone, email, reservation_date]
     );
 
-    // TODO: send confirmation email via nodemailer
+    try {
+      await sendEmail(
+        email,
+        "Garden Gems Consultation",
+        `Hello ${firstname},
+        Your consultation has been successfully scheduled on ${reservation_date}.
+        We’ll contact you at ${phone} if we need more details.
+        Thank you,
+        Garden Gems 🌱`
+      );
+    } catch (err) {
+      console.log("Error sending emails", err);
+    }
+
     res.status(201).json({ message: "Consultation scheduled successfully" });
   } catch (error) {
     console.error(error);

@@ -21,6 +21,16 @@ export async function submitContactUs(req, res) {
       [firstname, surname, middlename, email, phone, subject, message]
     );
 
+    try {
+          await sendEmail(
+            email,
+            "Garden Gems Consultation",
+            `Your message has been recieved, you will be contacted in 48hrs.`
+          );
+        } catch (err) {
+          console.log("Error sending emails", err);
+        }
+
     res.status(201).json({ message: "Message submitted successfully" });
   } catch (error) {
     console.error(error);
