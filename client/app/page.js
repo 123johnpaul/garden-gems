@@ -1,3 +1,4 @@
+// import { useState } from "react";for syncing backend and frontend
 import Image from "next/image";
 
 import QuotationMark from "@/_components/quotation";
@@ -47,14 +48,15 @@ import plants from "@/public/assets/plants.jpg";
 import peopleInGarden from "@/public/assets/peopleInGarden.jpg";
 
 export default function Home() {
-  const [message, setMessage] = useState("")
+  // For syncing backend and frontend
+  // const [message, setMessage] = useState("")
 
-  useEffect(() => {
-    fetch(`${API_BASE_URL}/`)
-      .then(res => res.json())
-      .then(data => setMessage(data.message))
-      .catch(err => console.error(err));
-  }, [])
+  // useEffect(() => {
+  //   fetch(`${API_BASE_URL}/`)
+  //     .then(res => res.json())
+  //     .then(data => setMessage(data.message))
+  //     .catch(err => console.error(err));
+  // }, [])
 
   return (
     <main className="flex flex-col w-full">
