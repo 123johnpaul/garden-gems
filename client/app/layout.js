@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${wixMadeforDisplay.className}`}>
+      <body className={`${wixMadeforDisplay.className} m-0 p-0 text-amber-200 tracking-[-0.04em]`}>
         <Header />
         {children}
         <Footer />
