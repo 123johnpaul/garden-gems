@@ -60,32 +60,30 @@ export default function Home() {
 
   return (
     <main className="flex flex-col w-full">
-      {/* Hero Section */}
-      <div className="flex gap-8 h-[600px] w-full bg-[#0C7769] justify-center items-center text-white">
-        <div className="flex justify-center items-center gap-14 max-w-6xl w-full">
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-7 gap-y-4">
-            <div className="flex flex-col items-center lg:items-start gap-[18px] p-4 md:p-0">
-              <h1 className="text-4xl md:text-6xl font-bold leading-16">
-                Award-Winning
-                <br /> Landscaping
-                <br /> Services
-              </h1>
-              <p className="font-normal text-md opacity-70 w-full md:w-1/2">
-                We provide top-notch services to clients who seek nothing less
-                than perfection. Let&apos;s discuss your ideas.
-              </p>
-            </div>
-            <button className="flex h-14 w-72 items-center justify-center rounded-lg bg-white text-center font-bold leading-9 tracking-[-0.01em] text-[#0C7769]">
-              Schedule a Consultation
-            </button>
-          </div>
+     {/* Hero Section */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 px-10 py-20 z-1 bg-[#0C7769] text-white">
+        <div className="flex flex-col justify-center space-y-6">
+          <h1 className="text-5xl font-bold leading-tight">
+            Award-Winning Landscaping Services
+          </h1>
+          <p className="text-lg max-w-lg">
+            We provide top-notch services to clients who seek nothing less than
+            perfection. Let’s discuss your ideas.
+          </p>
+          <button className="bg-white text-[#107361] font-semibold px-6 py-3 rounded hover:bg-gray-200 w-fit">
+            Schedule a Consultation
+          </button>
+        </div>
+        <div className="flex justify-center">
           <Image
-            alt="Man trims lawn with trimmer"
-            className="h-[40rem] w-[28rem] mt-32 hidden lg:block"
-            src={gardenCleaningImg}
+            src="/landscaper.png"
+            alt="Landscaper working"
+            width={570}
+            height={793}
+            className="rounded-lg shadow-lg"
           />
         </div>
-      </div>
+      </section>
       {/* Testimonial Section */}
       <div className="w-full flex flex-col justify-center items-center py-28 bg-[#FAF7F2]">
         <div className="flex flex-col md:flex-row justify-center items-center gap-10 lg:gap-30 max-w-6xl w-3/4 lg:w-1/2">
