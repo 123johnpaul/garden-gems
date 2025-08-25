@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
+import peopleInGarden from "@/public/assets/peopleInGarden.jpg"
+
 export default function Contact() {
   return (
     <section className="bg-[#0C7769] text-white py-16 px-6 md:px-16">
@@ -8,7 +10,7 @@ export default function Contact() {
         {/* Image */}
         <div>
           <Image
-            src="/assets/Image.png"
+            src={peopleInGarden}
             alt="Consultation"
             className="rounded-lg shadow-lg"
             width={600}

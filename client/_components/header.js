@@ -1,13 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import logo from "@/public/logo.svg";
+
 export default function Header() {
   return (
     <div className="max-h-[100px] bg-[#0C7769] text-white">
       {/* Navbar */}
-      <nav className="flex items-center justify-between px-10 py-6">
+      <nav className="flex flex-col md:flex-row items-center justify-between px-10 py-6">
         <div className="flex items-center space-x-2">
-          <Image src="/logo.svg" alt="Garden Gems" width={58} height={58} />
+          <Image src={logo} alt="Garden Gems" width={58} height={58} />
           <span className="text-xl font-bold">Garden Gems</span>
         </div>
         <div className="flex items-center space-x-8 text-sm">
