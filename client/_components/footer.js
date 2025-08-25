@@ -1,11 +1,10 @@
-// components/Footer.jsx
-
 import React from 'react';
 import Image from 'next/image'; // <--- Make sure you have this import!
 
-// You can remove the placeholder components now, as we'll use Image directly.
-// const GardenGemsLogoPlaceholder = () => ( ... );
-// const SocialIconPlaceholder = ({ children }) => ( ... );
+import logo from "@/public/logo.svg";
+import Phone from './phone';
+import CircularPhone from './circularPhone';
+import EmailIcon from './emailIcon';
 
 const Footer = () => {
   return (
@@ -39,7 +38,7 @@ const Footer = () => {
               Make sure your logo is in the 'public' folder, e.g., public/images/garden-gems-logo.png
             */}
             <Image
-              src="/icons/garden-gems-logo.svg" // <--- IMPORTANT: Update this path to your actual logo file
+              src={logo} // <--- IMPORTANT: Update this path to your actual logo file
               alt="Garden Gems Logo"
               width={150} // <--- Adjust width based on your logo's size
               height={40} // <--- Adjust height based on your logo's size
@@ -129,24 +128,12 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0 text-center md:text-left">
             <p className="flex items-center gap-2 justify-center md:justify-start">
               {/* --- CUSTOM QUESTION ICON --- */}
-              <Image
-                src="/icons/question-icon.svg" // <-- Replace with the path to YOUR question icon
-                alt="Question Icon"
-                width={24} // <-- Adjust width as needed
-                height={24} // <-- Adjust height as needed
-                className="rounded-full border border-white p-1"
-              />
+              <CircularPhone width={40} height={40} />
               Have a question? <span className="text-white">310-437-2766</span>
             </p>
             <p className="flex items-center gap-2 justify-center md:justify-start">
               {/* --- CUSTOM CONTACT ICON --- */}
-              <Image
-                src="/icons/contact-icon.svg" // <-- Replace with the path to YOUR contact icon
-                alt="Contact Icon"
-                width={24} // <-- Adjust width as needed
-                height={24} // <-- Adjust height as needed
-                className="rounded-full border border-white p-1"
-              />
+              <EmailIcon width={40} height={40} />
               Contact us at <span className="text-white">310-437-2766</span>
             </p>
           </div>
