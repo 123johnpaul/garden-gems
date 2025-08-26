@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export default function OffersCard({name, message, img, imgAltText}){
     return(
-        <div className="max-w-sm overflow-hidden shadow-lg bg-[#f9f6f1]">
+        <div className="max-w-6xl overflow-hidden shadow-lg bg-[#f9f6f1]">
       <div className="relative">
         <Image
-          className="w-full h-auto"
+          className="w-full h-full"
           src={img}
           alt={imgAltText}
         />
@@ -14,8 +14,8 @@ export default function OffersCard({name, message, img, imgAltText}){
           {name}
         </div>
       </div>
-      <div className="p-5 bg-[#006a62]">
-        <h2 className="text-white text-2xl font-semibold leading-tight">
+      <div className="p-5 bg-[#006a62] h-full">
+        <h2 className="text-white md:text-2xl font-semibold leading-tight">
           {message}
         </h2>
       </div>

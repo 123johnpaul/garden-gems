@@ -2,7 +2,7 @@ export default function BuildKiteLogo() {
   return (
     <svg
       className="opacity-70"
-      width="204"
+      width="186"
       height="36"
       viewBox="0 0 204 36"
       fill="none"

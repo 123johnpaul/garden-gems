@@ -1,7 +1,7 @@
 export default function DocuSignLogo() {
   return (
     <svg
-      width="95"
+      width="186"
       height="36"
       viewBox="0 0 95 36"
       fill="none"

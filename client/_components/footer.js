@@ -32,19 +32,15 @@ const Footer = () => {
       <div className="container mx-auto py-16 px-4 md:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
         {/* Company Logo and Social Media */}
         <div className="flex flex-col items-start">
-          <div className="mb-6">
-            {/* 
-              THIS IS WHERE YOU REPLACE THE PLACEHOLDER!
-              Make sure your logo is in the 'public' folder, e.g., public/images/garden-gems-logo.png
-            */}
+          <div className="mb-6 flex items-center gap-2">
             <Image
-              src={logo} // <--- IMPORTANT: Update this path to your actual logo file
+              src={logo}
               alt="Garden Gems Logo"
-              width={150} // <--- Adjust width based on your logo's size
-              height={40} // <--- Adjust height based on your logo's size
-              // layout="responsive" // You might use this for responsive images, but fixed width/height is often fine for logos
-              // objectFit="contain" // Useful if your image dimensions don't exactly match width/height
+              width="auto"
+              height="auto"
+             
             />
+            <span className='text-xl font-bold'>Garden Gems</span>
           </div>
           <div className="flex space-x-4">
            
