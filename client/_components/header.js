@@ -49,7 +49,7 @@ export default function Header() {
         {/* Desktop Contact */}
         <div className="hidden md:flex items-center space-x-4">
           <span className="text-sm">(000) 000 - 0000</span>
-          <Link href="/contact">
+          <Link href="/schedule-consultation">
             <button className="bg-transparent border border-white px-4 py-2 rounded hover:bg-white hover:text-[#107361] text-sm">
               Schedule a Consultation
             </button>

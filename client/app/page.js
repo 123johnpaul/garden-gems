@@ -1,5 +1,5 @@
-// import { useState } from "react";for syncing backend and frontend
 import Image from "next/image";
+import Link from "next/link";
 
 import QuotationMark from "@/_components/quotation";
 import HandWipingSurface from "@/_components/handWipingSurface";
@@ -74,9 +74,11 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <button className="bg-white text-[#0C7769] font-bold text-lg md:text-2xl px-15 py-2 md:py-6 rounded hover:bg-gray-200 w-fit">
-              Schedule a Consultation
-            </button>
+            <Link href="/schedule-consultation">
+              <button className="bg-white text-[#0C7769] font-bold text-lg md:text-2xl px-15 py-2 md:py-6 rounded hover:bg-gray-200 w-fit">
+                Schedule a Consultation
+              </button>
+            </Link>
           </div>
         </div>
         <div className="flex justify-center lg:col-start-5 lg:col-span-4 md:col-span-2">
@@ -119,7 +121,7 @@ export default function Home() {
         </div>
       </div>
       {/* About Us Section */}
-      <div className="w-full flex flex-col justify-center items-center pb-28 bg-[#FAF7F2]">
+      <div className="w-full flex flex-col justify-center items-center pb-28 bg-[#FAF7F2]" id="about">
         <div className="flex flex-col-reverse justify-center items-center md:flex-row max-w-6xl w-[80%] gap-14 border-b-[#1414142E] pb-4 mb-6 border-b">
           <div className="flex flex-col items-center md:items-start w-full lg:w-1/2">
             <div className="w-full lg:w-3/4 lg:py-10 flex flex-col gap-5">
@@ -187,7 +189,7 @@ export default function Home() {
         </div>
       </div>
       {/* Projects Section */}
-      <div className="w-full flex flex-col items-center text-white bg-[#0C7769] pb-28">
+      <div className="w-full flex flex-col items-center text-white bg-[#0C7769] pb-28" id="projects">
         <div className="max-w-6xl w-full">
           {/* Projects Grid */}
           <div className="flex flex-col gap-20 pt-14">
@@ -337,9 +339,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <button className="flex h-14 w-54 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
-          View All Services
-        </button>
+        <Link href="/services">
+          <button className="flex h-14 w-54 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
+            View All Services
+          </button>
+        </Link>
       </div>
       {/* Booking Steps Section */}
       <BookingSection />
@@ -376,9 +380,11 @@ export default function Home() {
                   Massive work force = quick turn-around
                 </li>
               </ul>
-              <button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
-                Schedule a Consultation
-              </button>
+              <Link href="/schedule-consultation">
+                <button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
+                  Schedule a Consultation
+                </button>
+              </Link>
             </div>
           </div>
           <div className="w-full md:w-1/2 flex justify-center">
@@ -447,9 +453,11 @@ export default function Home() {
             <h2 className="capitalize font-bold text-2xl lg:text-4xl leading-8 md:leading-13 text-center">
               Stunning Before and After Landscaping Design Transformations
             </h2>
-            <button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
-              Schedule a Consultation
-            </button>
+            <Link href="/schedule-consultation">
+              <button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
+                Schedule a Consultation
+              </button>
+            </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pb-16 px-5 h-full w-full relative">
             <div className="flex flex-col gap-3">
@@ -585,7 +593,7 @@ export default function Home() {
       </div>
 
       {/* Latest News Section */}
-      <div className="w-full flex flex-col justify-center items-center pb-28 px-4 bg-[#FAF7F2]">
+      <div className="w-full flex flex-col justify-center items-center pb-28 px-4 bg-[#FAF7F2]" id="blog">
         <div className="max-w-6xl flex flex-col">
           <div className="flex items-center justify-between pb-10 gap-5">
             <h2 className="capitalize font-bold text-2xl lg:text-4xl leading-8 md:leading-13">
@@ -653,7 +661,7 @@ export default function Home() {
       </div>
 
       {/* Contact Us Section */}
-      <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#0C7769] py-28 px-4">
+      <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#0C7769] py-28 px-4" id="contact">
         <div className="max-w-6xl w-full flex items-center justify-between gap-20">
           <div className="w-2/5 h-full hidden md:block">
             <Image
@@ -665,12 +673,12 @@ export default function Home() {
             />
           </div>
           <div className="text-white w-full md:w-3/5 flex flex-col">
-              <div className="flex flex-col gap-2">
-                <p className="opacity-75 mb-2">Need Any Consultations</p>
-                <h2 className="text-4xl sm:text-5xl font-bold mb-8">
-                  Contact Us
-                </h2>
-             <ContactUsForm />
+            <div className="flex flex-col gap-2">
+              <p className="opacity-75 mb-2">Need Any Consultations</p>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-8">
+                Contact Us
+              </h2>
+              <ContactUsForm />
             </div>
           </div>
         </div>

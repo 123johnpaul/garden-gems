@@ -1,5 +1,6 @@
 import React from "react";
-import Image from "next/image"; // <--- Make sure you have this import!
+import Image from "next/image";
+import Link from "next/link";
 
 import logo from "@/public/logo.svg";
 import CircularPhone from "./circularPhone";
@@ -24,7 +25,7 @@ const Footer = () => {
             <span className="text-xl font-bold">Garden Gems</span>
           </div>
           <div className="flex space-x-4">
-            <a href="#" aria-label="Twitter">
+            <Link href="#" aria-label="Twitter">
               <Image
                 src="/icons/twitter.svg" // <--- Update this path
                 alt="Twitter"
@@ -32,8 +33,8 @@ const Footer = () => {
                 height={32} // <--- Adjust size
                 className="rounded-full border border-white p-1" // Keep these classes for the border/padding
               />
-            </a>
-            <a href="#" aria-label="LinkedIn">
+            </Link>
+            <Link href="#" aria-label="LinkedIn">
               <Image
                 src="/icons/linkedin.svg" // <--- Update this path
                 alt="LinkedIn"
@@ -41,8 +42,8 @@ const Footer = () => {
                 height={32}
                 className="rounded-full border border-white p-1"
               />
-            </a>
-            <a href="#" aria-label="Facebook">
+            </Link>
+            <Link href="#" aria-label="Facebook">
               <Image
                 src="/icons/facebook.svg" // <--- Update this path
                 alt="Facebook"
@@ -50,8 +51,8 @@ const Footer = () => {
                 height={32}
                 className="rounded-full border border-white p-1"
               />
-            </a>
-            <a href="#" aria-label="Instagram">
+            </Link>
+            <Link href="#" aria-label="Instagram">
               <Image
                 src="/icons/instagram.svg" // <--- Update this path
                 alt="Instagram"
@@ -59,7 +60,7 @@ const Footer = () => {
                 height={32}
                 className="rounded-full border border-white p-1"
               />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -68,44 +69,44 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-6">Company</h3>
           <ul className="space-y-3 text-gray-300">
             <li>
-              <a
+              <Link
                 href="#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="#projects"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Projects
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Plants List
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="#about"
                 className="hover:text-teal-400 transition duration-200"
               >
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="#blog"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Blog
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -114,44 +115,44 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-6">Services</h3>
           <ul className="space-y-3 text-gray-300">
             <li>
-              <a
+              <Link
                 href="#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Outdoor Living
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Pools
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Hardscaping
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Patios
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Outdoor Kitchens
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -160,36 +161,36 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-6">Resources</h3>
           <ul className="space-y-3 text-gray-300">
             <li>
-              <a
-                href="#"
+              <Link
+                href="#contact"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Contact Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Terms
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Policy
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Payments
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
