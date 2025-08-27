@@ -46,6 +46,7 @@ import manWateringGarden from "@/public/assets/manWateringGarden.jpg";
 import womanInGarden from "@/public/assets/womanInGarden.jpg";
 import plants from "@/public/assets/plants.jpg";
 import peopleInGarden from "@/public/assets/peopleInGarden.jpg";
+import ContactUsForm from "@/_components/contact/contactUsForm";
 
 export default function Home() {
   // For syncing backend and frontend
@@ -73,7 +74,7 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <button className="bg-white text-[#107361] font-bold text-lg md:text-2xl px-15 py-2 md:py-6 rounded hover:bg-gray-200 w-fit">
+            <button className="bg-white text-[#0C7769] font-bold text-lg md:text-2xl px-15 py-2 md:py-6 rounded hover:bg-gray-200 w-fit">
               Schedule a Consultation
             </button>
           </div>
@@ -653,7 +654,7 @@ export default function Home() {
 
       {/* Contact Us Section */}
       <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#0C7769] py-28 px-4">
-        <div className="max-w-6xl w-full flex items-center justify-between">
+        <div className="max-w-6xl w-full flex items-center justify-between gap-20">
           <div className="w-2/5 h-full hidden md:block">
             <Image
               alt="A man and a woman in the garden"
@@ -663,107 +664,13 @@ export default function Home() {
               className="h-full w-full"
             />
           </div>
-          <div className="text-white w-full md:w-3/5 flex flex-col items-center">
-            <div className="flex flex-col justify-center">
+          <div className="text-white w-full md:w-3/5 flex flex-col">
               <div className="flex flex-col gap-2">
                 <p className="opacity-75 mb-2">Need Any Consultations</p>
                 <h2 className="text-4xl sm:text-5xl font-bold mb-8">
                   Contact Us
                 </h2>
-              </div>
-              <form action="#" method="POST" className="space-y-8">
-                {/* Top row of inputs */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-                      placeholder=" " // Required for the floating label effect
-                    />
-                    <label
-                      htmlFor="name"
-                      className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-                    >
-                      Name
-                    </label>
-                  </div>
-                  <div className="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-                      placeholder=" "
-                    />
-                    <label
-                      htmlFor="email"
-                      className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-                    >
-                      E-mail address
-                    </label>
-                  </div>
-                </div>
-
-                {/* Middle row of inputs */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="relative">
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-                      placeholder=" "
-                    />
-                    <label
-                      htmlFor="phone"
-                      className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-                    >
-                      Phone
-                    </label>
-                  </div>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-                      placeholder=" "
-                    />
-                    <label
-                      htmlFor="subject"
-                      className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-                    >
-                      Subject
-                    </label>
-                  </div>
-                </div>
-
-                {/* Message Textarea */}
-                <div className="relative">
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="4"
-                    className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-                    placeholder=" "
-                  ></textarea>
-                  <label
-                    htmlFor="message"
-                    className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-                  >
-                    Message
-                  </label>
-                </div>
-
-                {/* Submit Button */}
-                <div>
-                  <button className="flex h-14 w-54 items-center justify-center rounded-lg text-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] bg-white">
-                    Send Message
-                  </button>
-                </div>
-              </form>
+             <ContactUsForm />
             </div>
           </div>
         </div>

@@ -39,7 +39,7 @@ async function initDB() {
       )
     `);
 
-    // Create Newslatter table
+    // Create Newsletter table
     await db.exec(`
       CREATE TABLE IF NOT EXISTS newsletter (
         id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
