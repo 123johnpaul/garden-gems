@@ -5,7 +5,7 @@ export default function Services() {
   return (
     <section className="bg-gray-50 py-16 px-6 md:px-16">
       <div className="max-w-7xl mx-auto text-center">
-        {/* Heading */}
+        {/* Title */}
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
           Wide Range Of Garden Gem Services
         </h2>
@@ -18,70 +18,73 @@ export default function Services() {
         {/* Service Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           {/* Card 1 */}
-          <div className="group flex flex-col items-center bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+          <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer">
             <img
               src="/assets/residential.png"
               alt="Residential Gardens"
-              className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-56 object-cover rounded-md"
             />
-            <p className="mt-4 text-lg font-semibold text-gray-800 group-hover:text-[#0C7769] transition-colors duration-300">
+            <p className="mt-4 text-lg font-medium text-gray-800">
               Residential Gardens
             </p>
-            <button className="mt-3 mb-5 px-4 py-2 text-sm rounded-lg text-white bg-[#0C7769] hover:bg-[#095d52] transition-colors duration-300">
+            <button className="mt-3 px-4 py-2 bg-[#0C7769] text-white text-sm rounded-lg hover:bg-[#095f54] transition duration-200">
               Learn More
             </button>
           </div>
 
           {/* Card 2 */}
-          <div className="group flex flex-col items-center bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+          <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer">
             <img
               src="/assets/garden.png"
               alt="Garden Construction"
-              className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-56 object-cover rounded-md"
             />
-            <p className="mt-4 text-lg font-semibold text-gray-800 group-hover:text-[#0C7769] transition-colors duration-300">
+            <p className="mt-4 text-lg font-medium text-gray-800">
               Garden Construction
             </p>
-            <button className="mt-3 mb-5 px-4 py-2 text-sm rounded-lg text-white bg-[#0C7769] hover:bg-[#095d52] transition-colors duration-300">
+            <button className="mt-3 px-4 py-2 bg-[#0C7769] text-white text-sm rounded-lg hover:bg-[#095f54] transition duration-200">
               Learn More
             </button>
           </div>
 
           {/* Card 3 */}
-          <div className="group flex flex-col items-center bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+          <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer">
             <img
               src="/assets/landscape.png"
               alt="Landscape Design"
-              className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-56 object-cover rounded-md"
             />
-            <p className="mt-4 text-lg font-semibold text-gray-800 group-hover:text-[#0C7769] transition-colors duration-300">
+            <p className="mt-4 text-lg font-medium text-gray-800">
               Landscape Design
             </p>
-            <button className="mt-3 mb-5 px-4 py-2 text-sm rounded-lg text-white bg-[#0C7769] hover:bg-[#095d52] transition-colors duration-300">
+            <button className="mt-3 px-4 py-2 bg-[#0C7769] text-white text-sm rounded-lg hover:bg-[#095f54] transition duration-200">
               Learn More
             </button>
           </div>
 
           {/* Card 4 */}
-          <div className="group flex flex-col items-center bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+          <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer">
             <Image
               src="/assets/commercial.png"
               alt="Commercial Services"
-              className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-              width={400}
-              height={300}
+              className="w-full h-56 object-cover rounded-md"
+              width={300}
+              height={200}
             />
-            <p className="mt-4 text-lg font-semibold text-gray-800 group-hover:text-[#0C7769] transition-colors duration-300">
+            <p className="mt-4 text-lg font-medium text-gray-800">
               Commercial Services
             </p>
-            <button className="mt-3 mb-5 px-4 py-2 text-sm rounded-lg text-white bg-[#0C7769] hover:bg-[#095d52] transition-colors duration-300">
+            <button className="mt-3 px-4 py-2 bg-[#0C7769] text-white text-sm rounded-lg hover:bg-[#095f54] transition duration-200">
               Learn More
             </button>
           </div>
         </div>
 
-        {/* CTA Button */}
-        <button className="px-8 py-4 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-[#0C7769] hover:bg-[#095d52]">
+        {/* Main Button */}
+        <button
+          className="px-8 py-3 text-white text-lg font-medium rounded-lg shadow-lg hover:scale-105 transition duration-300"
+          style={{ backgroundColor: "#0C7769" }}
+        >
           View All Services
         </button>
       </div>
