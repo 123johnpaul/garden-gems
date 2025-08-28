@@ -1,5 +1,5 @@
-// import { useState } from "react";for syncing backend and frontend
 import Image from "next/image";
+import Link from "next/link";
 
 import QuotationMark from "@/_components/quotation";
 import HandWipingSurface from "@/_components/handWipingSurface";
@@ -46,6 +46,7 @@ import manWateringGarden from "@/public/assets/manWateringGarden.jpg";
 import womanInGarden from "@/public/assets/womanInGarden.jpg";
 import plants from "@/public/assets/plants.jpg";
 import peopleInGarden from "@/public/assets/peopleInGarden.jpg";
+import ContactUsForm from "@/_components/contact/contactUsForm";
 
 export default function Home() {
   // For syncing backend and frontend
@@ -59,28 +60,34 @@ export default function Home() {
   // }, [])
 
   return (
-    <main className="flex flex-col w-full">
-     {/* Hero Section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 px-10 py-20 z-1 bg-[#0C7769] text-white">
-        <div className="flex flex-col justify-center space-y-6">
-          <h1 className="text-5xl font-bold leading-tight">
-            Award-Winning Landscaping Services
-          </h1>
-          <p className="text-lg max-w-lg">
-            We provide top-notch services to clients who seek nothing less than
-            perfection. Let’s discuss your ideas.
-          </p>
-          <button className="bg-white text-[#107361] font-semibold px-6 py-3 rounded hover:bg-gray-200 w-fit">
-            Schedule a Consultation
-          </button>
+    <main>
+      {/* Hero Section */}
+      <section className="grid grid-cols-1 lg:grid-cols-8 md:grid-cols-4 gap-5 px-10 z-1 bg-[#0C7769] text-white">
+        <div className="flex flex-col justify-center items-start h-full lg:col-start-2 lg:col-span-3 md:col-span-2 gap-11">
+          <div className="flex flex-col gap-4.5">
+            <h1 className="text-3xl md:text-6xl font-bold leading-tight text-left">
+              Award-Winning Landscaping Services
+            </h1>
+            <p className="text-lg max-w-lg w-3/4">
+              We provide top-notch services to clients who seek nothing less
+              than perfection. Let’s discuss your ideas.
+            </p>
+          </div>
+          <div>
+            <Link href="/schedule-consultation">
+              <button className="bg-white text-[#0C7769] font-bold text-lg md:text-2xl px-15 py-2 md:py-6 rounded hover:bg-gray-200 w-fit">
+                Schedule a Consultation
+              </button>
+            </Link>
+          </div>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center lg:col-start-5 lg:col-span-4 md:col-span-2">
           <Image
-            src="/landscaper.png"
+            src={gardenCleaningImg}
             alt="Landscaper working"
             width={570}
             height={793}
-            className="rounded-lg shadow-lg"
+            className="shadow-lg"
           />
         </div>
       </section>
@@ -114,8 +121,8 @@ export default function Home() {
         </div>
       </div>
       {/* About Us Section */}
-      <div className="w-full flex flex-col justify-center items-center pb-28 bg-[#FAF7F2]">
-        <div className="flex flex-col-reverse justify-center items-center md:flex-row max-w-6xl w-[69%] gap-14 border-b-[#1414142E] pb-4 mb-6 border-b">
+      <div className="w-full flex flex-col justify-center items-center pb-28 bg-[#FAF7F2]" id="about">
+        <div className="flex flex-col-reverse justify-center items-center md:flex-row max-w-6xl w-[80%] gap-14 border-b-[#1414142E] pb-4 mb-6 border-b">
           <div className="flex flex-col items-center md:items-start w-full lg:w-1/2">
             <div className="w-full lg:w-3/4 lg:py-10 flex flex-col gap-5">
               <h2 className="text-2xl lg:text-4xl font-bold leading-8 lg:leading-13">
@@ -135,6 +142,7 @@ export default function Home() {
           <Image
             alt="Man trimming hedges"
             height={400}
+            width={400}
             className="w-full md:w-1/2"
             src={manTrimmingHedges}
           />
@@ -181,167 +189,211 @@ export default function Home() {
         </div>
       </div>
       {/* Projects Section */}
-      <div className="w-full flex flex-col justify-center items-center text-white bg-[#0C7769] pb-28">
-        <div className="max-w-6xl w-[80%] md:w-[50%] justify-center flex flex-col items-center">
-          <h2 className="capitalize font-bold text-2xl md:text-4xl leading-8 md:leading-13 text-center p-10">
-            Showcasing Our Finest Projects and Outdoor Creations
-          </h2>
-
+      <div className="w-full flex flex-col items-center text-white bg-[#0C7769] pb-28" id="projects">
+        <div className="max-w-6xl w-full">
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 grid-rows-1 lg:grid-cols-3 gap-16 pb-16">
-            {/* Project 1 */}
-            <div className="flex flex-col col-span-2">
-              <Image
-                src={royalPerkResidence}
-                alt="The Royal Perk Residence"
-                className="shadow-lg object-cover h-[350px] aspect-square"
-              />
-              <p className="uppercase text-xs opacity-75 pt-3">• Hotel</p>
-              <h3 className="font-semibold text-lg">
-                The Royal Perk Residence
-              </h3>
+          <div className="flex flex-col gap-20 pt-14">
+            <div className="flex items-center justify-center">
+              <h2 className="capitalize font-bold text-2xl md:text-4xl leading-8 md:leading-13 text-center w-3/4">
+                Showcasing Our Finest Projects and Outdoor Creations
+              </h2>
             </div>
+            <div className="flex flex-col gap-20">
+              <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-3 gap-7">
+                {/* Project 1 */}
+                <div className="flex flex-col col-span-2 px-4">
+                  <Image
+                    src={royalPerkResidence}
+                    alt="The Royal Perk Residence"
+                    className="object-cover h-full w-full aspect-square"
+                    width="auto"
+                    height="auto"
+                  />
+                  <div className="flex flex-col gap-2 w-3/4">
+                    <p className="uppercase text-xs opacity-75 pt-3">• Hotel</p>
+                    <h3 className="font-semibold text-lg">
+                      The Royal Perk Residence
+                    </h3>
+                  </div>
+                </div>
 
-            {/* Project 2 */}
-            <div className="flex flex-col col-span-2 lg:col-span-1 justify-center">
-              <Image
-                src={edenGardenResort}
-                alt="Eden Garden Resort"
-                className="shadow-lg object-cover w-full h-[200px] aspect-square"
-              />
-              <p className="uppercase text-xs opacity-75 pt-3">
-                • Water & Pools
-              </p>
-              <h3 className="font-semibold text-lg">Eden Garden Resort</h3>
-            </div>
+                {/* Project 2 */}
+                <div className="flex flex-col col-span-2 md:col-span-1 justify-center px-4">
+                  <Image
+                    src={edenGardenResort}
+                    alt="Eden Garden Resort"
+                    className="object-cover w-full h-1/2 aspect-square"
+                    width="auto"
+                    height="auto"
+                  />
+                  <div className="flex flex-col gap-2 w-3/4">
+                    <p className="uppercase text-xs opacity-75 pt-3">
+                      • Water & Pools
+                    </p>
+                    <h3 className="font-semibold text-lg">
+                      Eden Garden Resort
+                    </h3>
+                  </div>
+                </div>
 
-            {/* Project 3 */}
-            <div className="flex flex-col col-span-2 lg:col-span-1 justify-center">
-              <Image
-                src={coxdaLandscapeProject}
-                alt="Coxda Landscape Project"
-                className="shadow-lg object-cover w-full h-[200px] aspect-square"
-              />
-              <p className="uppercase text-xs opacity-75 pt-3">• Residential</p>
-              <h3 className="font-semibold text-lg">Coxda Landscape Project</h3>
-            </div>
+                {/* Project 3 */}
+                <div className="flex flex-col col-span-2 md:col-span-1 justify-center px-4">
+                  <Image
+                    src={coxdaLandscapeProject}
+                    alt="Coxda Landscape Project"
+                    className="object-cover w-full h-1/2 aspect-square"
+                    width="auto"
+                    height="auto"
+                  />
+                  <div className="flex flex-col gap-2 w-3/4">
+                    <p className="uppercase text-xs opacity-75 pt-3">
+                      • Residential
+                    </p>
+                    <h3 className="font-semibold text-lg">
+                      Coxda Landscape Project
+                    </h3>
+                  </div>
+                </div>
 
-            {/* Project 4 */}
-            <div className="flex flex-col col-span-2">
-              <Image
-                src={inaugurationProject}
-                alt="Inauguration Project"
-                className="shadow-lg object-cover h-[350px] aspect-square"
-              />
-              <p className="uppercase text-xs opacity-75 pt-3">
-                • Outdoor Lighting
-              </p>
-              <h3 className="font-semibold text-lg">Inauguration Project</h3>
+                {/* Project 4 */}
+                <div className="flex flex-col col-span-2 px-4">
+                  <Image
+                    src={inaugurationProject}
+                    alt="Inauguration Project"
+                    className="object-cover h-full w-full aspect-square"
+                    width="auto"
+                    height="auto"
+                  />
+                  <div className="flex flex-col gap-2 w-3/4">
+                    <p className="uppercase text-xs opacity-75 pt-3">
+                      • Outdoor Lighting
+                    </p>
+                    <h3 className="font-semibold text-lg">
+                      Inauguration Project
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <button className="flex h-14 w-54 items-center justify-center rounded-lg text-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] bg-white">
+                  View All Projects
+                </button>
+              </div>
             </div>
           </div>
-          <button className="flex h-14 w-54 items-center justify-center rounded-lg text-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] bg-white">
-            View All Projects
-          </button>
         </div>
       </div>
       {/* Services Section */}
       <div className="w-full flex flex-col justify-center items-center pb-28 bg-[#FAF7F2]">
-        <div className="max-w-6xl flex flex-col items-center justify-center">
-          <div className="flex flex-col items-center justify-center p-10">
-            <h2 className="capitalize font-bold text-2xl lg:text-4xl leading-8 md:leading-13 text-center">
+        <div className="max-w-6xl flex flex-col w-full">
+          <div className="flex flex-col items-center justify-center">
+            <h2 className="capitalize font-bold text-2xl lg:text-4xl leading-8 md:leading-13 text-center pt-10">
               Wide Range of Raleigh Landscaping Services
             </h2>
             <p className="w-full md:w-3/5 text-center text-sm opacity-60 mb-4">
               At the core of our purpose and dedication lies the mission to
-              unlock your landscape&apos;s utmost potential, while simultaneously
-              elevating your property value.
+              unlock your landscape&apos;s utmost potential, while
+              simultaneously elevating your property value.
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 pb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 pb-16 px-4">
             <div>
               <Image
-                width={250}
+                width="auto"
+                height="auto"
                 src={residentialGarden}
                 alt="A Residential Garden"
+                className="w-full"
               />
               <p className="font-semibold">Residential Gardens</p>
             </div>
             <div>
               <Image
-                width={250}
+                width="auto"
+                height="auto"
                 src={gardenConstruction}
                 alt="A Residential Garden"
+                className="w-full"
               />
               <p className="font-semibold">Garden Construction</p>
             </div>
             <div>
               <Image
-                width={250}
+                width="auto"
+                height="auto"
                 src={landscapeDesign}
                 alt="A Residential Garden"
+                className="w-full"
               />
               <p className="font-semibold">Landscape Design</p>
             </div>
             <div>
               <Image
-                width={250}
+                width="auto"
+                height="auto"
                 src={commercialServices}
                 alt="A Residential Garden"
+                className="w-full"
               />
               <p className="font-semibold">Commercial Services</p>
             </div>
           </div>
+        </div>
+        <Link href="/services">
           <button className="flex h-14 w-54 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
             View All Services
           </button>
-        </div>
+        </Link>
       </div>
       {/* Booking Steps Section */}
       <BookingSection />
 
       {/* Schedule Consultation Section */}
       <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#FAF7F2] py-28">
-        <div className="max-w-6xl flex flex-col lg:flex-row items-center">
+        <div className="max-w-6xl w-[80%] flex flex-col-reverse md:flex-row items-center">
           <div className="w-1/2 flex justify-center">
-            <div className="flex flex-col gap-6 w-3/4">
-              <h2 className="font-bold text-2xl lg:text-4xl">
+            <div className="flex flex-col gap-6">
+              <h2 className="font-bold text-2xl lg:text-4xl w-full md:w-3/4">
                 Why Our Landscape Services Stand Out
               </h2>
-              <p className="opacity-70 text-shadow-amber-50">
+              <p className="opacity-70 text-shadow-amber-50 w-full md:w-3/4">
                 At the heart of our values is prioritizing our clients. Your
                 satisfaction is paramount, and our highly skilled team goes
                 above and beyond to ensure every property receives exceptional
                 care.
               </p>
-              <ul className="list-none text-sm">
-                <li className="flex items-center gap-3">
+              <ul className="flex flex-col items-start justify-center list-none text-sm gap-2">
+                <li className="flex items-center gap-2">
                   <CheckMark />
                   Client satisfaction is priority #1
                 </li>
-                <li className="flex items-center gap-3">
+                <li className="flex items-center gap-2">
                   <CheckMark />
                   Highly skilled team
                 </li>
-                <li className="flex items-center gap-3">
+                <li className="flex items-center gap-2">
                   <CheckMark />
                   Your happy or we aren&apos;t done yet
                 </li>
-                <li className="flex items-center gap-3">
+                <li className="flex items-center gap-2">
                   <CheckMark />
                   Massive work force = quick turn-around
                 </li>
               </ul>
-              <button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
-                Schedule a Consultation
-              </button>
+              <Link href="/schedule-consultation">
+                <button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
+                  Schedule a Consultation
+                </button>
+              </Link>
             </div>
           </div>
-          <div className="w-1/2 flex justify-center">
+          <div className="w-full md:w-1/2 flex justify-center">
             <Image
               className="rounded-full"
               alt="A man holding a blower"
               src={manHoldingBlower}
               height={500}
+              width="auto"
             />
           </div>
         </div>
@@ -349,7 +401,7 @@ export default function Home() {
 
       {/* Countdown Section */}
       <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#FAF7F2] pb-28">
-        <div className="max-w-6xl flex flex-col lg:flex-row items-center justify-around w-full gap-20">
+        <div className="max-w-6xl flex flex-col md:flex-row items-center justify-between w-full gap-20 px-4">
           <p className="font-semibold text-lg">Countdowns</p>
           <div className="flex flex-col justify-evenly gap-3">
             <hr />
@@ -384,7 +436,13 @@ export default function Home() {
 
       {/* Testimonial video */}
       <div className="w-full flex flex-col justify-center pb-28 object-cover relative bg-[#FAF7F2]">
-        <Image alt="A lawn mower" className="w-full" src={lawnMower} />
+        <Image
+          alt="A lawn mower"
+          width="auto"
+          height="auto"
+          className="w-full"
+          src={lawnMower}
+        />
         <PlayCircle className="absolute top-1/2 left-1/2 transform -translate-x-2/3 -translate-y-[90%]" />
       </div>
 
@@ -395,16 +453,20 @@ export default function Home() {
             <h2 className="capitalize font-bold text-2xl lg:text-4xl leading-8 md:leading-13 text-center">
               Stunning Before and After Landscaping Design Transformations
             </h2>
-            <button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
-              Schedule a Consultation
-            </button>
+            <Link href="/schedule-consultation">
+              <button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
+                Schedule a Consultation
+              </button>
+            </Link>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 pb-16 h-[528px] w-[90%] relative">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pb-16 px-5 h-full w-full relative">
             <div className="flex flex-col gap-3">
               <Image
                 src={gardenBefore}
                 alt="A Garden Before Landscape Design Transformation"
-                className="w-full h-[350px]"
+                className="w-full h-3/4"
+                width="auto"
+                height="auto"
               />
               <p className="font-semibold">Before</p>
             </div>
@@ -412,19 +474,23 @@ export default function Home() {
               <Image
                 src={gardenAfter}
                 alt="A Garden After Landscape Design Transformation"
-                className="w-full h-[350px]"
+                className="w-full h-3/4"
+                width="auto"
+                height="auto"
               />
               <p className="font-semibold">After</p>
             </div>
 
             {/* Position SpiralArrow between first two columns */}
-            <SpiralArrow className="absolute top-2/5 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-10 w-[148px]" />
+            <SpiralArrow className="absolute top-1/4 left-1/2 md:top-2/5 top md:left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-10 w-25" />
 
             <div className="flex flex-col gap-3">
               <Image
                 src={backyardBefore}
                 alt="A Backyard Before Landscape Design Transformation"
-                className="w-full h-[350px]"
+                className="w-full h-3/4"
+                width="auto"
+                height="auto"
               />
               <p className="font-semibold">Before</p>
             </div>
@@ -432,20 +498,22 @@ export default function Home() {
               <Image
                 src={backyardAfter}
                 alt="A Backyard After Landscape Design Transformation"
-                className="w-full h-[350px]"
+                className="w-full h-3/4"
+                width="auto"
+                height="auto"
               />
               <p className="font-semibold">After</p>
             </div>
 
             {/* Position second SpiralArrow between last two columns */}
-            <SpiralArrow className="absolute top-2/5 left-3/4 transform -translate-x-1/2 -translate-y-1/2 z-10 w-[148px]" />
+            <SpiralArrow className="absolute top-3/4 left-1/2 md:top-2/5 md:left-3/4 transform -translate-x-1/2 -translate-y-1/2 z-10 w-25" />
           </div>
         </div>
       </div>
 
       {/* Testimonial 2 Section: GUY WITH PLANT */}
       <div className="w-full flex flex-col text-white bg-[#FAF7F2]">
-        <div className="w-full max-h-[668px] flex gap-0">
+        <div className="w-full flex gap-0">
           <div className="w-1/2">
             <Image
               src={manHoldingPlant}
@@ -453,8 +521,8 @@ export default function Home() {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="w-1/2 bg-[#0C7769] text-white">
-            <div className="flex flex-col items-center justify-center h-full w-[75%] lg:pl-30 gap-[60px]">
+          <div className="w-1/2 bg-[#0C7769] flex flex-col items-center justify-center h-auto p-16">
+            <div className="flex flex-col items-center justify-center h-full w-[75%] gap-15">
               <div className="flex flex-col items-center justify-center gap-7">
                 <div className="flex">
                   <StarFilled />
@@ -463,12 +531,12 @@ export default function Home() {
                   <StarFilled />
                   <StarHalfFilled />
                 </div>
-                <div className="flex flex-col items-center text-center text-lg gap-10">
+                <div className="flex flex-col items-center text-center text-lg md:text-2xl gap-10">
                   <p className="tracking-normal">
-                    &quot;We love the landscaping project that Tom Bom designed and
-                    installed. The design was perfect for our yard, and the team
-                    that came to plant the trees and bushes did an amazing job.
-                    We highly recommend Tomlinson Bomberger! &quot;
+                    &quot;We love the landscaping project that Tom Bom designed
+                    and installed. The design was perfect for our yard, and the
+                    team that came to plant the trees and bushes did an amazing
+                    job. We highly recommend Tomlinson Bomberger! &quot;
                   </p>
                   <div className="flex flex-col items-center gap-1.5">
                     <p className="text-[16px] font-semibold">– ROBERT SMITH</p>
@@ -491,17 +559,17 @@ export default function Home() {
       </div>
 
       {/* Current Special Offers Section */}
-      <div className="w-full flex flex-col justify-center items-center p-28 bg-[#FAF7F2]">
+      <div className="w-full flex flex-col justify-center items-center py-28 bg-[#FAF7F2]">
         <div className="max-w-6xl flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center p-10">
             <h2 className="capitalize font-bold text-2xl lg:text-4xl leading-8 md:leading-13 text-center">
               Current Special Offers
             </h2>
-            <p className="w-full md:w-3/5 text-center text-sm opacity-60 mb-4">
+            <p className="w-full md:w-3/5 text-center opacity-60 mb-4">
               Click or tap a special to view details-
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 px-8">
             <OffersCard
               name="Garden Construction"
               message="30% Off When You Swap to Lawns and Palms"
@@ -525,7 +593,7 @@ export default function Home() {
       </div>
 
       {/* Latest News Section */}
-      <div className="w-full flex flex-col justify-center items-center pb-28 bg-[#FAF7F2]">
+      <div className="w-full flex flex-col justify-center items-center pb-28 px-4 bg-[#FAF7F2]" id="blog">
         <div className="max-w-6xl flex flex-col">
           <div className="flex items-center justify-between pb-10 gap-5">
             <h2 className="capitalize font-bold text-2xl lg:text-4xl leading-8 md:leading-13">
@@ -536,7 +604,7 @@ export default function Home() {
               <Arrow />
             </div>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 pb-16 h-[490px] w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
             <BlogPostCard
               imageUrl={manMowingLawn}
               category="Garden"
@@ -544,7 +612,7 @@ export default function Home() {
               title="Landscaping in A Post-Pandemic World"
               width={500}
               height={250}
-              className="h-full"
+              className="h-fit"
             />
             <BlogPostCard
               imageUrl={manWateringGarden}
@@ -553,7 +621,7 @@ export default function Home() {
               title="Which one is best for your yard?"
               width={100}
               height={490}
-              className="h-1/2"
+              className="h-fit md:h-1/2"
             />
             <BlogPostCard
               imageUrl={womanInGarden}
@@ -562,7 +630,7 @@ export default function Home() {
               title="5 Fall Yard Care & Maintenance Tips"
               width={100}
               height={490}
-              className="h-full"
+              className="h-fit"
             />
             <BlogPostCard
               imageUrl={plants}
@@ -571,19 +639,19 @@ export default function Home() {
               title="5 Steps to Design The Yard of Your Dreams"
               width={100}
               height={490}
-              className="h-1/2"
+              className="h-fit md:h-1/2"
             />
           </div>
         </div>
       </div>
 
       {/* Happy Clients Section */}
-      <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#FAF7F2] p-28 gap-5">
+      <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#FAF7F2] gap-15 pb-28 px-2">
         <div className="flex flex-col items-center">
-          <p className="text-sm">A Right Media Mix Can Make The Difference</p>
+          <p className="text">A Right Media Mix Can Make The Difference</p>
           <h2 className="font-bold text-4xl">Our Happy Clients</h2>
         </div>
-        <div className="flex w-full py-10 items-center justify-evenly">
+        <div className="flex flex-col md:flex-row w-full items-center justify-evenly gap-4 md:gap-0">
           <BuildKiteLogo />
           <CorningLogo />
           <DeliverooLogo />
@@ -593,113 +661,25 @@ export default function Home() {
       </div>
 
       {/* Contact Us Section */}
-      <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#0C7769]">
-        <div className="max-w-6xl flex items-center justify-between w-3/4 h-[880px]">
-          <div>
+      <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#0C7769] py-28 px-4" id="contact">
+        <div className="max-w-6xl w-full flex items-center justify-between gap-20">
+          <div className="w-2/5 h-full hidden md:block">
             <Image
               alt="A man and a woman in the garden"
               src={peopleInGarden}
-              width={520}
-              height={640}
+              width="auto"
+              height="auto"
+              className="h-full w-full"
             />
           </div>
-          <div className="text-white w-1/2">
-            <p className="opacity-75 mb-2">Need Any Consultations</p>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-8">Contact Us</h2>
-
-            <form action="#" method="POST" className="space-y-8">
-              {/* Top row of inputs */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="relative">
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-                    placeholder=" " // Required for the floating label effect
-                  />
-                  <label
-                    htmlFor="name"
-                    className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-                  >
-                    Name
-                  </label>
-                </div>
-                <div className="relative">
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-                    placeholder=" "
-                  />
-                  <label
-                    htmlFor="email"
-                    className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-                  >
-                    E-mail address
-                  </label>
-                </div>
-              </div>
-
-              {/* Middle row of inputs */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="relative">
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-                    placeholder=" "
-                  />
-                  <label
-                    htmlFor="phone"
-                    className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-                  >
-                    Phone
-                  </label>
-                </div>
-                <div className="relative">
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-                    placeholder=" "
-                  />
-                  <label
-                    htmlFor="subject"
-                    className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-                  >
-                    Subject
-                  </label>
-                </div>
-              </div>
-
-              {/* Message Textarea */}
-              <div className="relative">
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-                  placeholder=" "
-                ></textarea>
-                <label
-                  htmlFor="message"
-                  className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-                >
-                  Message
-                </label>
-              </div>
-
-              {/* Submit Button */}
-              <div>
-                <button className="flex h-14 w-54 items-center justify-center rounded-lg text-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] bg-white">
-                  Send Message
-                </button>
-              </div>
-            </form>
+          <div className="text-white w-full md:w-3/5 flex flex-col">
+            <div className="flex flex-col gap-2">
+              <p className="opacity-75 mb-2">Need Any Consultations</p>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-8">
+                Contact Us
+              </h2>
+              <ContactUsForm />
+            </div>
           </div>
         </div>
       </div>

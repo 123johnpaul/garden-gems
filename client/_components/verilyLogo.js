@@ -1,7 +1,7 @@
 export default function VerilyLogo() {
   return (
     <svg
-      width="97"
+      width="186"
       height="36"
       viewBox="0 0 97 36"
       fill="none"

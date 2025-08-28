@@ -17,7 +17,7 @@ export default function BlogPostCard({
           alt={title}
           width={width}
           height={height}
-          className={`w-full h-1/2 object-cover ${className}`} // Ensures the image is responsive within its container
+          className={`w-full object-cover ${className}`}
         />
       <div className="pt-6">
         {/* Meta information: Category and Date */}

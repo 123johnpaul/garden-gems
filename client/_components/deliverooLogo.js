@@ -1,7 +1,7 @@
 export default function DeliverooLogo() {
   return (
     <svg
-      width="135"
+      width="186"
       height="36"
       viewBox="0 0 135 36"
       fill="none"

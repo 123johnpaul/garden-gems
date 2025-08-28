@@ -25,7 +25,7 @@ export default function BookingSection() {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="w-1/2 bg-[#0C7769] text-white">
+        <div className="w-1/2 bg-[#0C7769] text-white px-2">
           <div className="flex flex-col items-start h-full lg:p-20">
             <h2 className="capitalize font-bold text-2xl lg:text-4xl leading-8 md:leading-13">
               Book in 3 Easy Steps
@@ -52,7 +52,7 @@ export default function BookingSection() {
                     <Phone height={48} width={49} />
                     <div className="flex flex-col justify-center items-start h-1/2 w-full md:pb-7">
                       <p className="text-lg font-bold">Make Call</p>
-                      <p className="text-[16px] opacity-60">
+                      <p className="text-sm md:text-2xl opacity-60">
                         Schedule a design meeting!
                       </p>
                     </div>
@@ -67,7 +67,7 @@ export default function BookingSection() {
                     <Handshake height={48} width={49} />
                     <div className="flex flex-col justify-center items-start h-1/2 w-full md:pb-7">
                       <p className="text-lg font-bold">Collaborate</p>
-                      <p className="text-[16px] opacity-60">
+                      <p className="text-sm md:text-2xl opacity-60">
                         Create your perfect plan!
                       </p>
                     </div>
@@ -82,7 +82,7 @@ export default function BookingSection() {
                     <ConstructionWorker height={48} width={49} />
                     <div className="flex flex-col justify-center items-start h-1/2 w-full md:pb-7">
                       <p className="text-lg font-bold">Construction</p>
-                      <p className="text-[16px] opacity-60">
+                      <p className="text-sm md:text-2xl opacity-60">
                         With approved design, construction starts!
                       </p>
                     </div>
@@ -97,7 +97,7 @@ export default function BookingSection() {
                     <Confetti height={48} width={49} />
                     <div className="flex flex-col justify-center items-start h-1/2 w-full md:pb-7">
                       <p className="text-lg font-bold">Celebrate</p>
-                      <p className="text-[16px] opacity-60">
+                      <p className="text-sm md:text-2xl opacity-60">
                         Raise a toast in the backyard of your dreamsl
                       </p>
                     </div>
