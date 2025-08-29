@@ -139,7 +139,7 @@ export default function ContactUsForm() {
         {/* Submit + error */}
         <div className="space-y-3">
            <button
-                className="flex h-14 w-54 items-center justify-center rounded-lg bg-white text-center font-bold leading-9 tracking-[-0.01em] text-[#0C7769] disabled:opacity-60 disabled:cursor-not-allowed shadow-sm hover:shadow transition"
+                className="flex h-14 w-full md:w-54 items-center justify-center rounded-lg bg-white text-center font-bold leading-9 tracking-[-0.01em] text-[#0C7769] disabled:opacity-60 disabled:cursor-not-allowed shadow-sm hover:shadow transition"
                 disabled={pending}
                 type="submit"
               >

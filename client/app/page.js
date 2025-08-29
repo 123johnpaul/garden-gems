@@ -62,7 +62,7 @@ export default function Home() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-8 md:grid-cols-4 gap-5 px-10 z-1 bg-[#0C7769] text-white">
+      <section className="grid grid-cols-1 lg:grid-cols-8 md:grid-cols-4 gap-5 px-10 z-1 bg-[#0C7769] text-white py-4">
         <div className="flex flex-col justify-center items-start h-full lg:col-start-2 lg:col-span-3 md:col-span-2 gap-11">
           <div className="flex flex-col gap-4.5">
             <h1 className="text-3xl md:text-6xl font-bold leading-tight text-left">
@@ -646,10 +646,10 @@ export default function Home() {
       </div>
 
       {/* Happy Clients Section */}
-      <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#FAF7F2] gap-15 pb-28 px-2">
-        <div className="flex flex-col items-center">
-          <p className="text">A Right Media Mix Can Make The Difference</p>
-          <h2 className="font-bold text-4xl">Our Happy Clients</h2>
+      <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#FAF7F2] gap-15 pb-28 px-4">
+        <div className="flex flex-col items-center gap-4.5">
+          <p className="text-center">A Right Media Mix Can Make The Difference</p>
+          <h2 className="font-bold text-4xl text-center">Our Happy Clients</h2>
         </div>
         <div className="flex flex-col md:flex-row w-full items-center justify-evenly gap-4 md:gap-0">
           <BuildKiteLogo />

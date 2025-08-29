@@ -57,8 +57,6 @@ export const submitConsultationForm = async (prevState, formData) => {
       email: formData.get("email")?.toString().trim() || "",
       phone: formData.get("phone")?.toString().trim() || "",
       reservation_date: formData.get("reservation_date")?.toString().trim() || "",
-      subject: formData.get("subject")?.toString().trim() || "",
-      message: formData.get("message")?.toString().trim() || "",
     };
 
     // Basic validations (extend as needed)

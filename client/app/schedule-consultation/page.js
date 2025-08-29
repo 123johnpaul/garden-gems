@@ -6,7 +6,7 @@ import ConsultationForm from "@/_components/consultation/consultationForm";
 
 export default function ScheduleConsultation() {
   return (
-    <section className="bg-[#0C7769] text-white py-16 px-6 md:px-16">
+    <section className="bg-white py-16 px-6 md:px-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <div>
           <Image

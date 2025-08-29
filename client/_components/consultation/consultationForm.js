@@ -33,12 +33,12 @@ export default function ConsultationForm() {
               type="text"
               id="firstname"
               name="firstname"
-              className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
+              className="peer w-full bg-transparent border-b-2 focus:outline-none py-2"
               placeholder="" // Required for the floating label effect
             />
             <label
               htmlFor="firstname"
-              className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
+              className="absolute left-0 -top-5 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-[#141414]"
             >
               First Name
             </label>
@@ -48,12 +48,12 @@ export default function ConsultationForm() {
               type="text"
               id="middlename"
               name="middlename"
-              className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
+              className="peer w-full bg-transparent border-b-2 focus:outline-none py-2"
               placeholder="" // Required for the floating label effect
             />
             <label
               htmlFor=""
-              className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
+              className="absolute left-0 -top-5  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown: peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-[#141414]"
             >
               Middle Name
             </label>
@@ -63,12 +63,12 @@ export default function ConsultationForm() {
               type="text"
               id="surname"
               name="surname"
-              className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
+              className="peer w-full bg-transparent border-b-2 focus:outline-none py-2 transition-colors"
               placeholder="" // Required for the floating label effect
             />
             <label
               htmlFor="surname"
-              className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
+              className="absolute left-0 -top-5  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-[#141414]"
             >
               Last Name/ Surname
             </label>
@@ -78,12 +78,12 @@ export default function ConsultationForm() {
               type="email"
               id="email"
               name="email"
-              className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
+              className="peer w-full bg-transparent border-b-2 focus:outline-none py-2 transition-colors"
               placeholder=" "
             />
             <label
               htmlFor="email"
-              className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
+              className="absolute left-0 -top-5  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-[#141414]"
             >
               E-mail address
             </label>
@@ -94,12 +94,12 @@ export default function ConsultationForm() {
               type="tel"
               id="phone"
               name="phone"
-              className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
+              className="peer w-full bg-transparent border-b-2 focus:outline-none py-2 transition-colors"
               placeholder=" "
             />
             <label
               htmlFor="phone"
-              className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
+              className="absolute left-0 -top-5  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-[#141414]"
             >
               Phone
             </label>
@@ -109,53 +109,21 @@ export default function ConsultationForm() {
               type="datetime-local"
               id="reservation_date"
               name="reservation_date"
-              className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
+              className="peer w-full bg-transparent border-b-2 focus:outline-none py-2 transition-colors"
             />
             <label
               htmlFor="reservation_date"
-              className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
+              className="absolute left-0 -top-5  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-[#141414]"
             >
               Reservation Date & Time
             </label>
           </div>
         </div>
 
-        <div className="relative">
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-            placeholder=" "
-          />
-          <label
-            htmlFor="subject"
-            className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-          >
-            Subject
-          </label>
-        </div>
-
-        {/* Message Textarea */}
-        <div className="relative">
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            className="peer w-full bg-transparent border-b-2 border-gray-400 focus:border-white focus:outline-none py-2 transition-colors"
-            placeholder=" "
-          ></textarea>
-          <label
-            htmlFor="message"
-            className="absolute left-0 -top-5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-gray-200"
-          >
-            Message
-          </label>
-        </div>
         {/* Submit Button */}
         <div>
           <button
-            className="flex h-14 w-64 items-center justify-center rounded-lg text-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] bg-white"
+            className="flex h-14 w-64 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]"
             disabled={pending}
             type="submit"
           >
