@@ -1,12 +1,25 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { fetchData } from "@/utils/api";
 
 import logo from "@/public/logo.svg";
+import ServiceLinks from "./header/serviceLinks";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const loadServices = async () => {
+      const data = await fetchData("services");
+      setServices(data);
+    };
+    loadServices();
+  }, []);
+
 
   return (
     <div className="bg-[#0C7769] text-white">
@@ -25,18 +38,18 @@ export default function Header() {
             Home
           </Link>
           <div className="relative group">
-            <button className="hover:underline">Services ▾</button>
-            <div className="absolute left-0 opacity-0 invisible w-40 mt-2 bg-white text-black shadow-md rounded transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:visible hover:opacity-100 hover:visible">
-              <Link href="/services" className="block px-4 py-2 hover:bg-gray-100">
-                Lawn Care
-              </Link>
-              <Link href="/services" className="block px-4 py-2 hover:bg-gray-100">
-                Landscaping
-              </Link>
-              <Link href="/services" className="block px-4 py-2 hover:bg-gray-100">
-                Garden Design
-              </Link>
-            </div>
+            <Link href="/services" className="hover:underline">Services ▾</Link>
+             <div className="absolute left-0 opacity-0 invisible w-40 mt-2 bg-white text-black shadow-md rounded transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:visible hover:opacity-100 hover:visible">
+ {services.map((service) => (
+        <Link
+          key={service.id}
+          href={`/services/${service.id}`}
+          className="block px-4 py-2 hover:bg-gray-100"
+        >
+          {service.name}
+        </Link>
+      ))}
+</div>
           </div>
           <Link href="/projects" className="hover:underline">
             Projects

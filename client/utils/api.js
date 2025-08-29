@@ -35,3 +35,14 @@ export async function postData(endpoint, data) {
 
   return parsed ?? {};
 }
+
+export async function fetchData(endpoint){
+  try{
+    console.log(`http://localhost:4000/${endpoint}`)
+  const response = await fetch(`http://localhost:4000/${endpoint}`);
+  const data = await response.json();
+  return data;
+  }catch(err){
+    throw err.message
+  }
+}
