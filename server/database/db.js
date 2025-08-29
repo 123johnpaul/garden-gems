@@ -47,6 +47,16 @@ async function initDB() {
       )
     `);
 
+    await db.exec(`
+    CREATE TABLE IF NOT EXISTS services (
+    id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+    name TEXT UNIQUE,
+    image_path TEXT NOT NULL,
+    description TEXT
+  )
+`)
+
+
     console.log("✅ Database initialized with all tables");
   }
   return db;

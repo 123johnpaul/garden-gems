@@ -1,5 +1,5 @@
 export async function postData(endpoint, data) {
-  const response = await fetch(`${process.env.API_BASE_URL}${endpoint}`, {
+  const response = await fetch(`http://localhost:5000${endpoint}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
