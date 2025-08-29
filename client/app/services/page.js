@@ -1,5 +1,30 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
+
+const serviceCards = [
+  {
+    slug: "residential",
+    title: "Residential Gardens",
+    image: "/assets/residential.png",
+  },
+  {
+    slug: "garden",
+    title: "Garden Construction",
+    image: "/assets/garden.png",
+  },
+  {
+    slug: "landscape",
+    title: "Landscape Design",
+    image: "/assets/landscape.png",
+  },
+  {
+    slug: "commercial",
+    title: "Commercial Services",
+    image: "/assets/commercial.png",
+    useNextImage: true,
+  },
+];
 
 export default function Services() {
   return (
@@ -16,51 +41,32 @@ export default function Services() {
 
         {/* Service Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-          <div className="flex flex-col items-center">
-            <img
-              src="/assets/residential.png"
-              alt="Residential Gardens"
-              className="w-full h-64 object-cover rounded-lg shadow"
-            />
-            <p className="mt-4 text-lg font-medium text-gray-800">
-              Residential Gardens
-            </p>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img
-              src="/assets/garden.png"
-              alt="Garden Construction"
-              className="w-full h-64 object-cover rounded-lg shadow"
-            />
-            <p className="mt-4 text-lg font-medium text-gray-800">
-              Garden Construction
-            </p>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img
-              src="/assets/landscape.png"
-              alt="Landscape Design"
-              className="w-full h-64 object-cover rounded-lg shadow"
-            />
-            <p className="mt-4 text-lg font-medium text-gray-800">
-              Landscape Design
-            </p>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <Image
-              src="/assets/commercial.png"
-              alt="Commercial Services"
-              className="w-full h-64 object-cover rounded-lg shadow"
-              width={200}
-              height={200}
-            />
-            <p className="mt-4 text-lg font-medium text-gray-800">
-              Commercial Services
-            </p>
-          </div>
+          {serviceCards.map((card) => (
+            <Link
+              key={card.slug}
+              href={`/services/${card.slug}`}
+              className="flex flex-col items-center hover:scale-105 transition-transform"
+            >
+              {card.useNextImage ? (
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  className="w-full h-64 object-cover rounded-lg shadow"
+                  width={200}
+                  height={200}
+                />
+              ) : (
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="w-full h-64 object-cover rounded-lg shadow"
+                />
+              )}
+              <p className="mt-4 text-lg font-medium text-gray-800">
+                {card.title}
+              </p>
+            </Link>
+          ))}
         </div>
 
         {/* Button with custom green color */}
