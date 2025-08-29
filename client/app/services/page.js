@@ -1,28 +1,34 @@
+"use client";
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 
-const serviceCards = [
+const services = [
   {
-    slug: "residential",
+    id: 1,
     title: "Residential Gardens",
     image: "/assets/residential.png",
+    description:
+      "Transform your home into a relaxing green haven. Our residential garden services include personalized plant selection, seasonal care, and design tailored to your lifestyle.",
   },
   {
-    slug: "garden",
+    id: 2,
     title: "Garden Construction",
     image: "/assets/garden.png",
+    description:
+      "From concept to completion, we bring your dream garden to life. We handle soil preparation, planting, irrigation systems, and structural features with precision.",
   },
   {
-    slug: "landscape",
+    id: 3,
     title: "Landscape Design",
     image: "/assets/landscape.png",
+    description:
+      "Our expert designers create stunning, functional landscapes that blend beauty and sustainability, enhancing the overall value of your property.",
   },
   {
-    slug: "commercial",
+    id: 4,
     title: "Commercial Services",
     image: "/assets/commercial.png",
-    useNextImage: true,
+    description:
+      "We provide large-scale landscaping and maintenance for offices, estates, and public spaces, ensuring a professional, welcoming environment year-round.",
   },
 ];
 
@@ -30,52 +36,35 @@ export default function Services() {
   return (
     <section className="bg-gray-50 py-16 px-6 md:px-16">
       <div className="max-w-7xl mx-auto text-center">
+        {/* ✅ Updated Title + Subtitle */}
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-          Wide Range Of Garden Gem Services
+          Explore Our Professional Gardening & Landscaping Services
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto mb-12">
-          At the core of our purpose and dedication lies the mission to unlock
-          your landscape’s utmost potential, while simultaneously elevating your
-          property value.
+          From cozy residential gardens to large commercial landscapes, we design,
+          build, and maintain spaces that inspire relaxation and elevate property
+          value.
         </p>
 
-        {/* Service Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-          {serviceCards.map((card) => (
-            <Link
-              key={card.slug}
-              href={`/services/${card.slug}`}
-              className="flex flex-col items-center hover:scale-105 transition-transform"
+        {/* ✅ Service Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {services.map((service) => (
+            <div
+              key={service.id}
+              className="flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300"
             >
-              {card.useNextImage ? (
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  className="w-full h-64 object-cover rounded-lg shadow"
-                  width={200}
-                  height={200}
-                />
-              ) : (
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="w-full h-64 object-cover rounded-lg shadow"
-                />
-              )}
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-full h-56 object-cover rounded-md"
+              />
               <p className="mt-4 text-lg font-medium text-gray-800">
-                {card.title}
+                {service.title}
               </p>
-            </Link>
+              <p className="mt-2 text-sm text-gray-600">{service.description}</p>
+            </div>
           ))}
         </div>
-
-        {/* Button with custom green color */}
-        <button
-          className="px-6 py-3 text-white rounded-lg shadow hover:opacity-90"
-          style={{ backgroundColor: "#0C7769" }}
-        >
-          View All Services
-        </button>
       </div>
     </section>
   );
