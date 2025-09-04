@@ -4,8 +4,7 @@ import Link from "next/link";
 
 export default async function ServiceDetailPage({ params }) {
   const {slug} = await params;
-  console.log(slug)
-  const service = await fetchData(`services/${slug}`);
+  const service = await fetchData(`/services/${slug}`);
 
   if (!service) {
     return (

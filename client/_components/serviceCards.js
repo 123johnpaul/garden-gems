@@ -3,7 +3,7 @@ import Link from "next/link";
 import { fetchData } from "@/utils/api";
 
 export default async function ServiceCards() {
-const services = await fetchData("services");
+const services = await fetchData("/services");
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
       {services.map((service) => (
