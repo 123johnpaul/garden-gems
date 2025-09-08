@@ -1,4 +1,5 @@
 import initDB from "../database/db.js";
+import { sendEmail } from "../services/emailService.js";
 
 export async function submitContactUs(req, res) {
   try {
