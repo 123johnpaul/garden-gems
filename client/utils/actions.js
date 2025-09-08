@@ -2,23 +2,37 @@
 
 import { postData } from "@/utils/api";
 
+const validateFormField = (field, formData) => {
+  return formData.get(field)?.toString().trim() || "";
+};
+
 export async function submitContactForm(prevState, formData) {
   try {
     const contactForm = {
-      firstname: formData.get("firstname")?.toString().trim() || "",
-      surname: formData.get("surname")?.toString().trim() || "",
-      middlename: formData.get("middlename")?.toString().trim() || "",
-      email: formData.get("email")?.toString().trim() || "",
-      phone: formData.get("phone")?.toString().trim() || "",
-      subject: formData.get("subject")?.toString().trim() || "",
-      message: formData.get("message")?.toString().trim() || "",
+      firstname: validateFormField("firstname", formData),
+      surname: validateFormField("surname", formData),
+      middlename: validateFormField("middlename", formData),
+      email: validateFormField("email", formData),
+      phone: validateFormField("phone", formData),
+      subject: validateFormField("subject", formData),
+      message: validateFormField("message", formData),
     };
 
     if (!contactForm.email) {
       return { ok: false, error: "Email is required" };
     }
-    if (!contactForm.firstname || !contactForm.surname) {
-      return { ok: false, error: "First and last name required" };
+    if (
+      !contactForm.firstname ||
+      !contactForm.surname ||
+      !contactForm.middlename
+    ) {
+      return { ok: false, error: "First, middle and last name required" };
+    }
+     if (!contactForm.phone || isNaN(contactForm.phone) ) {
+      return { ok: false, error: "Phone number is required and must be a valid number" };
+    }
+    if (!contactForm.subject || !contactForm.message) {
+      return { ok: false, error: "Subject and message are required" };
     }
 
     await postData("/contactus", contactForm);
@@ -31,7 +45,7 @@ export async function submitContactForm(prevState, formData) {
 export const submitNewsletterForm = async (prevState, formData) => {
   try {
     const newsletterForm = {
-      email: formData.get("email")?.toString().trim() || "",
+      email: validateFormField("email", formData),
     };
 
     if (!newsletterForm.email) {
@@ -51,23 +65,30 @@ export const submitNewsletterForm = async (prevState, formData) => {
 export const submitConsultationForm = async (prevState, formData) => {
   try {
     const consultationForm = {
-      firstname: formData.get("firstname")?.toString().trim() || "",
-      surname: formData.get("surname")?.toString().trim() || "",
-      middlename: formData.get("middlename")?.toString().trim() || "",
-      email: formData.get("email")?.toString().trim() || "",
-      phone: formData.get("phone")?.toString().trim() || "",
-      reservation_date: formData.get("reservation_date")?.toString().trim() || "",
+      firstname: validateFormField("firstname", formData),
+      surname: validateFormField("surname", formData),
+      middlename: validateFormField("middlename", formData),
+      email: validateFormField("email", formData),
+      phone: validateFormField("phone", formData),
+      reservation_date: validateFormField("reservation_date", formData),
     };
 
     // Basic validations (extend as needed)
     if (!consultationForm.email) {
       return { ok: false, error: "Email is required" };
     }
-    if (!consultationForm.firstname || !consultationForm.surname) {
-      return { ok: false, error: "First and last name required" };
+    if (
+      !consultationForm.firstname ||
+      !consultationForm.surname ||
+      !consultationForm.middlename
+    ) {
+      return { ok: false, error: "First, middle and last name required" };
     }
     if (!consultationForm.reservation_date) {
       return { ok: false, error: "Reservation date/time required" };
+    }
+    if (!consultationForm.phone || isNaN(consultationForm.phone)) {
+      return { ok: false, error: "Phone number is required and must be a valid number" };
     }
 
     await postData("/consultation", consultationForm);
