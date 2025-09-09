@@ -1,19 +1,15 @@
 import initDB from "../database/db.js";
 import { sendEmail } from "../services/emailService.js";
+import { validationResult } from "express-validator";
 
 export async function subscribeNewsletter(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  
   try {
     const { email } = req.body;
-    if (!email) {
-      return res.status(400).json({ error: "Email is required" });
-    }
-
-    // Simple regex for email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return res.status(400).json({ error: "Invalid email format" });
-    }
-
     const db = await initDB();
 
     await db.run("INSERT INTO newsletter (email) VALUES (?)", [email]);

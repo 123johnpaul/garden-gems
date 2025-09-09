@@ -1,9 +1,16 @@
-import express from "express";
-import {subscribeNewsletter} from "../Controller/newsLetterController.js";
+import express from "express"
+import {subscribeNewsletter} from "../Controller/newsLetterController.js"
+import {body} from "express-validator"
 
 const router = express.Router();
 
-// POST /newsletter
-router.post("/", subscribeNewsletter);
+router.post("/",
+    [
+    body("email")
+    .isEmail()
+    .withMessage("Email must be valid")
+    .normalizeEmail()
+    ]
+    ,subscribeNewsletter);
 
 export default router;
