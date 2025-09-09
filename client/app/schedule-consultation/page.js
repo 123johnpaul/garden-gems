@@ -13,8 +13,8 @@ export default function ScheduleConsultation() {
             src={peopleInOffice}
             alt="People discussing in an office"
             className="rounded-lg shadow-lg"
-            width={600}
-            height={600}
+            width="auto"
+            height="auto"
           />
         </div>
 
