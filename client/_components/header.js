@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import logo from "@/public/logo.svg";
+import Button from "./button";
 
 export default function Header({ services }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,21 +53,21 @@ export default function Header({ services }) {
         <div className="hidden md:flex items-center space-x-4">
           <span className="text-sm">(000) 000 - 0000</span>
           <Link href="/schedule-consultation">
-            <button className="bg-transparent border border-white px-4 py-2 rounded hover:bg-white hover:text-[#107361] text-sm">
-              Schedule a Consultation
-            </button>
+              <Button className="bg-transparent border border-white px-4 py-2 rounded hover:bg-white hover:text-[#107361] text-sm">
+                Schedule a Consultation
+              </Button>
           </Link>
         </div>
 
         {/* Mobile Hamburger */}
-        <button
+        <Button
           className="md:hidden flex flex-col space-y-1"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <span className="w-6 h-0.5 bg-white"></span>
           <span className="w-6 h-0.5 bg-white"></span>
           <span className="w-6 h-0.5 bg-white"></span>
-        </button>
+        </Button>
       </nav>
 
       {/* Mobile Menu */}
@@ -103,11 +104,14 @@ export default function Header({ services }) {
             </Link>
             <div className="pt-4 border-t border-white/20">
               <p className="text-sm mb-2">(000) 000 - 0000</p>
-              <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                <button className="bg-transparent border border-white px-4 py-2 rounded hover:bg-white hover:text-[#107361] text-sm">
-                  Schedule a Consultation
-                </button>
-              </Link>
+              <Link
+                href="/schedule-consultation"
+                onClick={() => setIsMenuOpen(false)}
+              >
+              <Button className="bg-transparent border border-white px-4 py-2 rounded hover:bg-white hover:text-[#107361] text-sm">
+                Schedule a Consultation
+              </Button>
+              </Link>            
             </div>
           </div>
         </div>

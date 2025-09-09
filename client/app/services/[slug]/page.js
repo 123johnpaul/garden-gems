@@ -2,6 +2,8 @@ import { fetchData } from "@/utils/api";
 import Image from "next/image";
 import Link from "next/link";
 
+import Button from "@/_components/button";
+
 export default async function ServiceDetailPage({ params }) {
   const {slug} = await params;
   const service = await fetchData(`/services/${slug}`);
@@ -28,9 +30,9 @@ export default async function ServiceDetailPage({ params }) {
       <h1 className="text-3xl font-bold mb-4">{service.name}</h1>
       <p className="text-gray-700 text-lg mb-8">{service.description}</p>
       <Link href="/schedule-consultation">
-        <button className="px-6 py-3 text-white bg-[#0C7769] rounded-lg shadow hover:opacity-90 hover:scale-105 transition-all duration-300">
+        <Button className="px-6 py-3 text-white bg-[#0C7769] rounded-lg shadow hover:opacity-90 hover:scale-105 transition-all duration-300">
           Schedule Consultation
-        </button>
+        </Button>
       </Link>
     </section>
   );

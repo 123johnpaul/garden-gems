@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { fetchData } from "@/utils/api";
 
+import Button from "./button";
+
 export default async function ServiceCards() {
 const services = await fetchData("/services");
   return (
@@ -22,9 +24,9 @@ const services = await fetchData("/services");
             {service.name}
           </p>
           <Link href={`/services/${service.id}`}>
-            <button className="mt-3 px-4 py-2 bg-[#0C7769] text-white text-sm rounded-lg hover:bg-[#095f54] transition duration-200">
+            <Button className="mt-3 px-4 py-2 bg-[#0C7769] text-white text-sm rounded-lg hover:bg-[#095f54] transition duration-200">
               Learn more
-            </button>
+            </Button>
           </Link>
         </div>
       ))}
