@@ -1,36 +1,51 @@
 import initDB from "../database/db.js";
 import { sendEmail } from "../services/emailService.js";
+import { validationResult } from "express-validator";
+import { initializePayment,verifyPayment } from "../services/paymentservice.js";
+
 
 export async function scheduleConsultation(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   try {
-    const { firstname, surname, middlename, phone, email, reservation_date } =
-      req.body;
+    const { firstname, surname, middlename, phone, email, reservation_date } = req.body;
 
-    if (
-      !firstname ||
-      !surname ||
-      !middlename ||
-      !phone ||
-      !email ||
-      !reservation_date
-    ) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
+    const paymentInit = await initializePayment({
+      email,
+      amount: 10000,
+      callback_url: `http://localhost:5000/consultation/verify?firstname=${firstname}&surname=${surname}&middlename=${middlename}&phone=${phone}&email=${email}&reservation_date=${reservation_date}`,
+    });
 
-    // Simple regex for email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return res.status(400).json({ error: "Invalid email format" });
-    }
+    return res.status(200).json({
+      authorization_url: paymentInit.data.authorization_url,
+      reference: paymentInit.data.reference,
+      message: "Redirect user to Paystack for payment",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Payment initialization failed" });
+  }
+}
 
-    const db = await initDB();
-    await db.run(
-      `INSERT INTO consultation (firstname, surname, middlename, phone, email, reservation_date)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [firstname, surname, middlename, phone, email, reservation_date]
-    );
+export async function verifyConsultationPayment(req, res) {
+  try {
+    const { reference, firstname, surname, middlename, phone, email, reservation_date } = req.query;
 
-    try {
+    const verification = await verifyPayment(reference);
+
+    if (verification.data.status === "success") {
+      // Save consultation after payment success
+      const db = await initDB();
+      await db.run(
+        `INSERT INTO consultation (firstname, surname, middlename, phone, email, reservation_date)
+         VALUES (?, ?, ?, ?, ?, ?)`,
+        [firstname, surname, middlename, phone, email, reservation_date]
+      );
+
+      // Send confirmation email
       await sendEmail(
         email,
         "Garden Gems Consultation",
@@ -40,13 +55,13 @@ export async function scheduleConsultation(req, res) {
         Thank you,
         Garden Gems 🌱`
       );
-    } catch (err) {
-      console.log("Error sending emails", err);
-    }
 
-    res.status(201).json({ message: "Consultation scheduled successfully" });
+      return res.status(201).json({ message: "Consultation scheduled successfully after payment" });
+    } else {
+      return res.status(400).json({ error: "Payment verification failed" });
+    }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Something went wrong" });
+    res.status(500).json({ error: "Something went wrong during verification" });
   }
 }

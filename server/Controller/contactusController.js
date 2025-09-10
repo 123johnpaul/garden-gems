@@ -1,20 +1,16 @@
 import initDB from "../database/db.js";
+import { validationResult } from "express-validator";
 import { sendEmail } from "../services/emailService.js";
 
+
 export async function submitContactUs(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   try {
     const { firstname, surname, middlename, email, phone, subject, message } = req.body;
-
-    if (!firstname || !surname || !middlename || !email || !phone || !subject || !message) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
-
-    // Simple regex for email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return res.status(400).json({ error: "Invalid email format" });
-    }
-
     const db = await initDB();
     await db.run(
       `INSERT INTO contactus (firstname, surname, middlename, email, phone, subject, message)
@@ -23,14 +19,14 @@ export async function submitContactUs(req, res) {
     );
 
     try {
-          await sendEmail(
-            email,
-            "Garden Gems Consultation",
-            `Your message has been recieved, you will be contacted in 48hrs.`
-          );
-        } catch (err) {
-          console.log("Error sending emails", err);
-        }
+      await sendEmail(
+        email,
+        "Garden Gems Consultation",
+        `Hello ${firstname},\n\nYour message has been received. You will be contacted within 48hrs.\n\nGarden Gems 🌱`
+      );
+    } catch (err) {
+      console.error("Error sending email", err);
+    }
 
     res.status(201).json({ message: "Message submitted successfully" });
   } catch (error) {

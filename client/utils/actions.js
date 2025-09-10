@@ -35,7 +35,7 @@ export async function submitContactForm(prevState, formData) {
       return { ok: false, error: "Subject and message are required" };
     }
 
-    await postData("/contactus", contactForm);
+    await postData("contactus", contactForm);
     return { ok: true, error: null };
   } catch (err) {
     return { ok: false, error: err.message || "Failed to send message" };
@@ -52,7 +52,7 @@ export const submitNewsletterForm = async (prevState, formData) => {
       return { ok: false, error: "Email is required" };
     }
 
-    await postData("/newsletter", newsletterForm);
+    await postData("newsletter", newsletterForm);
     return { ok: true, error: null };
   } catch (err) {
     return {
@@ -91,7 +91,7 @@ export const submitConsultationForm = async (prevState, formData) => {
       return { ok: false, error: "Phone number is required and must be a valid number" };
     }
 
-    await postData("/consultation", consultationForm);
+    await postData("consultation", consultationForm);
     return { ok: true, error: null };
   } catch (err) {
     return {
