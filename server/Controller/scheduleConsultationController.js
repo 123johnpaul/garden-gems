@@ -5,6 +5,9 @@ import {
   initializePayment,
   verifyPayment,
 } from "../services/paymentservice.js";
+import dotenv from "dotenv";
+
+dotenv.config({ quiet: true });
 
 export async function scheduleConsultation(req, res) {
   const errors = validationResult(req);
@@ -27,7 +30,7 @@ export async function scheduleConsultation(req, res) {
     const paymentInit = await initializePayment({
       email,
       amount: price,
-      callback_url: `http://localhost:3000/schedule-consultation/verify?firstname=${firstname}&surname=${surname}&middlename=${middlename}&phone=${phone}&email=${email}&reservation_date=${reservation_date}`,
+      callback_url: `https://garden-gems.vercel.app/schedule-consultation/verify?firstname=${firstname}&surname=${surname}&middlename=${middlename}&phone=${phone}&email=${email}&reservation_date=${reservation_date}`,
     });
 
     return res.status(200).json({
