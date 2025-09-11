@@ -1,16 +1,15 @@
 // services/paystackService.js
 import axios from "axios";
-
-const PAYSTACK_SECRET_KEY = 'sk_test_97771d956273614a978a0a57fb94f0b610c5db12'
+import dotenv from "dotenv";
+dotenv.config();
 
 const paystack = axios.create({
   baseURL: "https://api.paystack.co",
   headers: {
-    Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`,
+    Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
     "Content-Type": "application/json",
   },
 });
-
 
 export async function initializePayment({ email, amount, callback_url }) {
   try {

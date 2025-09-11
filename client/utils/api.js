@@ -1,7 +1,7 @@
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
 export async function postData(endpoint, data) {
-  const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -48,7 +48,7 @@ export async function fetchData(endpoint) {
 
 export async function verifyPayment(endpoint){
       try {    
-        const response = await fetch(`http://localhost:5000${endpoint}`);
+        const response = await fetch(`${API_BASE_URL}${endpoint}`);
         const data = await response.json();
         return {...data, status: response.status}
       } catch (error) {

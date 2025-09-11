@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config({ quiet: true });
+
 import express from "express";
 import bodyParser from "body-parser";
 
@@ -17,7 +20,7 @@ app.use("/consultation", consultationRoutes);
 app.use("/contactus", contactusRoutes);
 app.use("/services",servicesroutes)
 
-const PORT = 5000;
+const PORT = process.env.PORT
 
 app.get("/", (req, res) => {
   res.send("API is running 🚀");

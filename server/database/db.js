@@ -46,7 +46,7 @@ async function initDB() {
         email TEXT UNIQUE NOT NULL
       )
     `);
-
+    // services table
     await db.exec(`
     CREATE TABLE IF NOT EXISTS services (
     id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
