@@ -1,11 +1,10 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useActionState } from "react";
 
 import { submitConsultationForm } from "@/utils/actions";
 import LoadingSpinner from "../loadingSpinner";
 import Button from "../button";
-import { redirect } from "next/navigation";
 
 const initialState = { ok: false, error: null, paystackDetails: null };
 
@@ -15,20 +14,22 @@ export default function ConsultationForm() {
     submitConsultationForm,
     initialState
   );
-  const [showSuccess, setShowSuccess] = useState(false);
+    const [redirecting, setRedirecting] = useState(false);
 
-  const closePopup = ()=>{
-  setShowSuccess(false)
-  redirect(state.paystackDetails.authorization_url)
-}
 
   // When state.ok becomes true show modal and reset form
   useEffect(() => {
-    if (state.ok) {
+    if (state.ok && state.paystackDetails?.authorization_url) {
       formRef.current?.reset();
-      setShowSuccess(true);
+      setRedirecting(true);
+      // tiny delay to paint the overlay before navigation
+      const url = state.paystackDetails.authorization_url;
+      const t = setTimeout(() => {
+        window.location.assign(url); // keeps history
+      }, 100);
+      return () => clearTimeout(t);
     }
-  }, [state.ok]);
+  }, [state.ok, state.paystackDetails?.authorization_url]);
 
   return (
     <>
@@ -136,11 +137,11 @@ export default function ConsultationForm() {
           >
             {pending ? (
               <div className="flex items-center gap-2">
-                <span>Sending</span>
+                <span>Processing</span>
                 <LoadingSpinner size="sm" />
               </div>
             ) : (
-              "Schedule Consultation"
+              "Proceed to Payment Page"
             )}
           </Button>
           {state.error && (
@@ -150,34 +151,16 @@ export default function ConsultationForm() {
           )}
         </div>
       </form>
-      {showSuccess && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl animate-[fadeIn_.25s_ease] relative">
-            <Button
-              onClick={() => setShowSuccess(false)}
-              className="absolute right-3 top-3 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
-              aria-label="Close"
-            >
-              ×
-            </Button>
-            <h2 className="mb-2 text-xl font-semibold text-[#141414]">
-              Consultation Scheduled
-            </h2>
-            <p className="mb-4 text-sm text-[#141414]">
-              We look forward to meeting you soon.
-            </p>
-            <div className="flex justify-end">
-              <Button
-                onClick={closePopup}
-                className="rounded-lg bg-[#0C7769] px-4 py-2 text-sm font-medium text-white hover:bg-[#0a5e54] focus:outline-none focus:ring-2 focus:ring-[#0C7769]/50"
-              >
-                Proceed to Consultation Payment
-              </Button>
-            </div>
+      {redirecting && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="bg-white rounded-xl shadow-lg px-6 py-4 flex items-center gap-3">
+            <span
+              className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-[#0C7769]/30 border-t-[#0C7769]"
+              aria-hidden="true"
+            />
+            <span className="text-sm text-[#0C7769] font-medium">
+              Redirecting to Paystack...
+            </span>
           </div>
         </div>
       )}
