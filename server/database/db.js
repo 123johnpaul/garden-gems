@@ -39,13 +39,23 @@ async function initDB() {
       )
     `);
 
-    // Create Newslatter table
+    // Create Newsletter table
     await db.exec(`
       CREATE TABLE IF NOT EXISTS newsletter (
         id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
         email TEXT UNIQUE NOT NULL
       )
     `);
+
+    await db.exec(`
+    CREATE TABLE IF NOT EXISTS services (
+    id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+    name TEXT UNIQUE,
+    image_path TEXT NOT NULL,
+    description TEXT
+  )
+`)
+
 
     console.log("✅ Database initialized with all tables");
   }
