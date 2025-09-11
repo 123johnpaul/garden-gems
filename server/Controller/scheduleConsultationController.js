@@ -16,7 +16,7 @@ export async function scheduleConsultation(req, res) {
     const paymentInit = await initializePayment({
       email,
       amount: 10000,
-      callback_url: `http://localhost:5000/consultation/verify?firstname=${firstname}&surname=${surname}&middlename=${middlename}&phone=${phone}&email=${email}&reservation_date=${reservation_date}`,
+      callback_url: `http://localhost:3000/schedule-consultation/verify?firstname=${firstname}&surname=${surname}&middlename=${middlename}&phone=${phone}&email=${email}&reservation_date=${reservation_date}`,
     });
 
     return res.status(200).json({

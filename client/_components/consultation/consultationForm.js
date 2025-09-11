@@ -5,8 +5,9 @@ import { useActionState } from "react";
 import { submitConsultationForm } from "@/utils/actions";
 import LoadingSpinner from "../loadingSpinner";
 import Button from "../button";
+import { redirect } from "next/navigation";
 
-const initialState = { ok: false, error: null };
+const initialState = { ok: false, error: null, paystackDetails: null };
 
 export default function ConsultationForm() {
   const formRef = useRef(null);
@@ -15,6 +16,11 @@ export default function ConsultationForm() {
     initialState
   );
   const [showSuccess, setShowSuccess] = useState(false);
+
+  const closePopup = ()=>{
+  setShowSuccess(false)
+  redirect(state.paystackDetails.authorization_url)
+}
 
   // When state.ok becomes true show modal and reset form
   useEffect(() => {
@@ -166,10 +172,10 @@ export default function ConsultationForm() {
             </p>
             <div className="flex justify-end">
               <Button
-                onClick={() => setShowSuccess(false)}
+                onClick={closePopup}
                 className="rounded-lg bg-[#0C7769] px-4 py-2 text-sm font-medium text-white hover:bg-[#0a5e54] focus:outline-none focus:ring-2 focus:ring-[#0C7769]/50"
               >
-                Close
+                Proceed to Consultation Payment
               </Button>
             </div>
           </div>
