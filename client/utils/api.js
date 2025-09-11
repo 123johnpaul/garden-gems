@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://garden-gems.onrender.com";
 
 export async function postData(endpoint, data) {
   const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
@@ -48,7 +48,7 @@ export async function fetchData(endpoint) {
 
 export async function verifyPayment(endpoint){
       try {    
-        const response = await fetch(`http://localhost:5000${endpoint}`);
+        const response = await fetch(`https://garden-gems.onrender.com${endpoint}`);
         const data = await response.json();
         return {...data, status: response.status}
       } catch (error) {
