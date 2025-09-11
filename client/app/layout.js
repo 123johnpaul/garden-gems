@@ -1,10 +1,8 @@
 import { Wix_Madefor_Display } from "next/font/google";
 import "./globals.css";
+import PageLayout from "@/_components/PageLayout";
 
-import Header from "@/_components/header";
-import Footer from "@/_components/footer";
-
-const wixMadeforDisplay = Wix_Madefor_Display({subsets: ["latin"]})
+const wixMadeforDisplay = Wix_Madefor_Display({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Garden Gems",
@@ -13,11 +11,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${wixMadeforDisplay.className}`}>
-        <Header />
-        {children}
-        <Footer />
+    <html lang="en" className="scroll-smooth">
+      <body
+        className={`${wixMadeforDisplay.className} m-0 p-0 text-amber-200 tracking-[-0.04em]`}
+      >
+        <PageLayout>{children}</PageLayout>
       </body>
     </html>
   );

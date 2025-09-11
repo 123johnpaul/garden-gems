@@ -1,0 +1,33 @@
+{
+  "name": "garden-gems-backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/123johnpaul/garden-gems#readme",
+  "bugs": {
+    "url": "https://github.com/123johnpaul/garden-gems/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/123johnpaul/garden-gems.git"
+  },
+  "license": "ISC",
+  "author": "Tosin and JohnPaul",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.11.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "nodemailer": "^7.0.5",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "nodemon": "^3.1.10",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}
