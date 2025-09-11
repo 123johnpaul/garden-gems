@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { verifyPayment } from '@/utils/api';
 import LoadingSpinner from '@/_components/loadingSpinner';
 
+
+
 export default function VerifyConsultationPayment() {
   const searchParams = useSearchParams();
   const router = useRouter();
