@@ -47,6 +47,7 @@ import womanInGarden from "@/public/assets/womanInGarden.jpg";
 import plants from "@/public/assets/plants.jpg";
 import peopleInGarden from "@/public/assets/peopleInGarden.jpg";
 import ContactUsForm from "@/_components/contact/contactUsForm";
+import Button from "@/_components/button";
 
 export default function Home() {
   // For syncing backend and frontend
@@ -75,9 +76,7 @@ export default function Home() {
           </div>
           <div>
             <Link href="/schedule-consultation">
-              <button className="bg-white text-[#0C7769] font-bold text-lg md:text-2xl px-15 py-2 md:py-6 rounded hover:bg-gray-200 w-fit">
-                Schedule a Consultation
-              </button>
+              <Button className="bg-white text-[#0C7769] font-bold text-lg md:text-2xl px-15 py-2 md:py-6 rounded w-fit"> Schedule a Consultation</Button>
             </Link>
           </div>
         </div>
@@ -121,7 +120,10 @@ export default function Home() {
         </div>
       </div>
       {/* About Us Section */}
-      <div className="w-full flex flex-col justify-center items-center pb-28 bg-[#FAF7F2]" id="about">
+      <div
+        className="w-full flex flex-col justify-center items-center pb-28 bg-[#FAF7F2]"
+        id="about"
+      >
         <div className="flex flex-col-reverse justify-center items-center md:flex-row max-w-6xl w-[80%] gap-14 border-b-[#1414142E] pb-4 mb-6 border-b">
           <div className="flex flex-col items-center md:items-start w-full lg:w-1/2">
             <div className="w-full lg:w-3/4 lg:py-10 flex flex-col gap-5">
@@ -135,9 +137,9 @@ export default function Home() {
                 outdoor spaces into breathtaking, picturesque havens.
               </p>
             </div>
-            <button className="flex h-14 w-54 items-center justify-center rounded-lg bg-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] text-white">
+            <Button className="flex h-14 w-54 items-center justify-center rounded-lg bg-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] text-white">
               More About Us
-            </button>
+            </Button>
           </div>
           <Image
             alt="Man trimming hedges"
@@ -189,7 +191,10 @@ export default function Home() {
         </div>
       </div>
       {/* Projects Section */}
-      <div className="w-full flex flex-col items-center text-white bg-[#0C7769] pb-28" id="projects">
+      <div
+        className="w-full flex flex-col items-center text-white bg-[#0C7769] pb-28"
+        id="projects"
+      >
         <div className="max-w-6xl w-full">
           {/* Projects Grid */}
           <div className="flex flex-col gap-20 pt-14">
@@ -275,9 +280,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex justify-center">
-                <button className="flex h-14 w-54 items-center justify-center rounded-lg text-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] bg-white">
+                <Button className="flex h-14 w-54 items-center justify-center rounded-lg text-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] bg-white">
                   View All Projects
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -340,9 +345,9 @@ export default function Home() {
           </div>
         </div>
         <Link href="/services">
-          <button className="flex h-14 w-54 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
+          <Button className="flex h-14 w-54 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
             View All Services
-          </button>
+          </Button>
         </Link>
       </div>
       {/* Booking Steps Section */}
@@ -381,9 +386,9 @@ export default function Home() {
                 </li>
               </ul>
               <Link href="/schedule-consultation">
-                <button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
+                <Button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
                   Schedule a Consultation
-                </button>
+                </Button>
               </Link>
             </div>
           </div>
@@ -454,9 +459,9 @@ export default function Home() {
               Stunning Before and After Landscaping Design Transformations
             </h2>
             <Link href="/schedule-consultation">
-              <button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
+              <Button className="flex h-14 w-60 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]">
                 Schedule a Consultation
-              </button>
+              </Button>
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pb-16 px-5 h-full w-full relative">
@@ -593,7 +598,10 @@ export default function Home() {
       </div>
 
       {/* Latest News Section */}
-      <div className="w-full flex flex-col justify-center items-center pb-28 px-4 bg-[#FAF7F2]" id="blog">
+      <div
+        className="w-full flex flex-col justify-center items-center pb-28 px-4 bg-[#FAF7F2]"
+        id="blog"
+      >
         <div className="max-w-6xl flex flex-col">
           <div className="flex items-center justify-between pb-10 gap-5">
             <h2 className="capitalize font-bold text-2xl lg:text-4xl leading-8 md:leading-13">
@@ -648,7 +656,9 @@ export default function Home() {
       {/* Happy Clients Section */}
       <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#FAF7F2] gap-15 pb-28 px-4">
         <div className="flex flex-col items-center gap-4.5">
-          <p className="text-center">A Right Media Mix Can Make The Difference</p>
+          <p className="text-center">
+            A Right Media Mix Can Make The Difference
+          </p>
           <h2 className="font-bold text-4xl text-center">Our Happy Clients</h2>
         </div>
         <div className="flex flex-col md:flex-row w-full items-center justify-evenly gap-4 md:gap-0">
@@ -661,7 +671,10 @@ export default function Home() {
       </div>
 
       {/* Contact Us Section */}
-      <div className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#0C7769] py-28 px-4" id="contact">
+      <div
+        className="w-full flex flex-col items-center justify-center text-[#141414] bg-[#0C7769] py-28 px-4"
+        id="contact"
+      >
         <div className="max-w-6xl w-full flex items-center justify-between gap-20">
           <div className="w-2/5 h-full hidden md:block">
             <Image

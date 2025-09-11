@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useActionState } from "react";
 
 import { submitNewsletterForm } from "@/utils/actions";
 import LoadingSpinner from "./loadingSpinner";
+import Button from "./button";
 
 const initialState = { ok: false, error: null };
 export default function Newsletter() {
@@ -49,7 +50,7 @@ export default function Newsletter() {
             placeholder="Enter your email"
             className="bg-black border border-gray-600 text-white p-3 rounded-md w-full sm:w-auto flex-grow focus:outline-none focus:ring-1 focus:ring-gray-400"
           />
-          <button className="bg-[#0C7769] hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-md w-full sm:w-auto transition duration-300">
+          <Button className="bg-[#0C7769] hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-md w-full sm:w-auto transition duration-300">
             {pending ? (
               <div className="flex items-center gap-2">
                 <span>Sending</span>
@@ -58,7 +59,7 @@ export default function Newsletter() {
             ) : (
               "Subscribe"
             )}
-          </button>
+          </Button>
         </form>
       )}
     </div>

@@ -7,7 +7,7 @@ import CircularPhone from "./circularPhone";
 import EmailIcon from "./emailIcon";
 import Newsletter from "./newsletter";
 
-const Footer = () => {
+const Footer = ({ services }) => {
   return (
     <footer className="bg-black text-white font-sans">
       <Newsletter />
@@ -64,13 +64,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Navigation Columns (no changes here) */}
+        {/* Navigation Columns */}
         <div>
           <h3 className="text-lg font-semibold mb-6">Company</h3>
           <ul className="space-y-3 text-gray-300">
             <li>
               <Link
-                href="#"
+                href="/#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Home
@@ -78,7 +78,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="#projects"
+                href="/#projects"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Projects
@@ -86,7 +86,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="#"
+                href="/#"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Plants List
@@ -94,7 +94,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="#about"
+                href="/#about"
                 className="hover:text-teal-400 transition duration-200"
               >
                 About Us
@@ -102,7 +102,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="#blog"
+                href="/#blog"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Blog
@@ -110,50 +110,19 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-
         <div>
           <h3 className="text-lg font-semibold mb-6">Services</h3>
           <ul className="space-y-3 text-gray-300">
-            <li>
-              <Link
-                href="#"
-                className="hover:text-teal-400 transition duration-200"
-              >
-                Outdoor Living
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#"
-                className="hover:text-teal-400 transition duration-200"
-              >
-                Pools
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#"
-                className="hover:text-teal-400 transition duration-200"
-              >
-                Hardscaping
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#"
-                className="hover:text-teal-400 transition duration-200"
-              >
-                Patios
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#"
-                className="hover:text-teal-400 transition duration-200"
-              >
-                Outdoor Kitchens
-              </Link>
-            </li>
+            {services.map((service) => (
+              <li key={service.id}>
+                <Link
+                  href={`/services/${service.id}`}
+                  className="hover:text-teal-400 transition duration-200"
+                >
+                  {service.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -162,7 +131,7 @@ const Footer = () => {
           <ul className="space-y-3 text-gray-300">
             <li>
               <Link
-                href="#contact"
+                href="/#contact"
                 className="hover:text-teal-400 transition duration-200"
               >
                 Contact Us

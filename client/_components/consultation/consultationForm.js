@@ -4,6 +4,7 @@ import { useActionState } from "react";
 
 import { submitConsultationForm } from "@/utils/actions";
 import LoadingSpinner from "../loadingSpinner";
+import Button from "../button";
 
 const initialState = { ok: false, error: null };
 
@@ -122,7 +123,7 @@ export default function ConsultationForm() {
 
         {/* Submit Button */}
         <div>
-          <button
+          <Button
             className="flex h-14 w-64 items-center justify-center rounded-lg text-white text-center font-bold leading-9 tracking-[-0.01em] bg-[#0C7769]"
             disabled={pending}
             type="submit"
@@ -135,7 +136,7 @@ export default function ConsultationForm() {
             ) : (
               "Schedule Consultation"
             )}
-          </button>
+          </Button>
           {state.error && (
             <p className="text-sm text-red-400" role="alert">
               {state.error}
@@ -150,13 +151,13 @@ export default function ConsultationForm() {
           aria-modal="true"
         >
           <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl animate-[fadeIn_.25s_ease] relative">
-            <button
+            <Button
               onClick={() => setShowSuccess(false)}
               className="absolute right-3 top-3 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
               aria-label="Close"
             >
               ×
-            </button>
+            </Button>
             <h2 className="mb-2 text-xl font-semibold text-[#141414]">
               Consultation Scheduled
             </h2>
@@ -164,12 +165,12 @@ export default function ConsultationForm() {
               We look forward to meeting you soon.
             </p>
             <div className="flex justify-end">
-              <button
+              <Button
                 onClick={() => setShowSuccess(false)}
                 className="rounded-lg bg-[#0C7769] px-4 py-2 text-sm font-medium text-white hover:bg-[#0a5e54] focus:outline-none focus:ring-2 focus:ring-[#0C7769]/50"
               >
                 Close
-              </button>
+              </Button>
             </div>
           </div>
         </div>

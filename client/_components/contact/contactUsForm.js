@@ -2,6 +2,7 @@
 import { useRef, useState, useEffect, useActionState } from "react";
 import { submitContactForm } from "@/utils/actions";
 import LoadingSpinner from "../loadingSpinner";
+import Button from "../button";
 
 const initialState = { ok: false, error: null };
 
@@ -138,7 +139,7 @@ export default function ContactUsForm() {
 
         {/* Submit + error */}
         <div className="space-y-3">
-           <button
+           <Button
                 className="flex h-14 w-full md:w-54 items-center justify-center rounded-lg bg-white text-center font-bold leading-9 tracking-[-0.01em] text-[#0C7769] disabled:opacity-60 disabled:cursor-not-allowed shadow-sm hover:shadow transition"
                 disabled={pending}
                 type="submit"
@@ -151,7 +152,7 @@ export default function ContactUsForm() {
                 ) : (
                   "Send Message"
                 )}
-              </button>
+              </Button>
           {state.error && (
             <p className="text-sm text-red-400" role="alert">
               {state.error}
@@ -167,13 +168,13 @@ export default function ContactUsForm() {
           aria-modal="true"
         >
           <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl animate-[fadeIn_.25s_ease] relative">
-            <button
+            <Button
               onClick={() => setShowSuccess(false)}
               className="absolute right-3 top-3 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
               aria-label="Close"
             >
               ×
-            </button>
+            </Button>
             <h2 className="mb-2 text-xl font-semibold text-[#141414]">
               Message Sent
             </h2>
@@ -181,12 +182,12 @@ export default function ContactUsForm() {
               Thank you for reaching out. We&apos;ll get back to you shortly.
             </p>
             <div className="flex justify-end">
-              <button
+              <Button
                 onClick={() => setShowSuccess(false)}
                 className="rounded-lg bg-[#0C7769] px-4 py-2 text-sm font-medium text-white hover:bg-[#0a5e54] focus:outline-none focus:ring-2 focus:ring-[#0C7769]/50"
               >
                 Close
-              </button>
+              </Button>
             </div>
           </div>
         </div>
