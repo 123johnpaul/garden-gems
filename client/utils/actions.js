@@ -35,7 +35,7 @@ export async function submitContactForm(prevState, formData) {
       return { ok: false, error: "Subject and message are required" };
     }
 
-    await postData("contactus", contactForm);
+    await postData("/contactus", contactForm);
     return { ok: true, error: null };
   } catch (err) {
     return { ok: false, error: err.message || "Failed to send message" };
@@ -52,7 +52,7 @@ export const submitNewsletterForm = async (prevState, formData) => {
       return { ok: false, error: "Email is required" };
     }
 
-    await postData("newsletter", newsletterForm);
+    await postData("/newsletter", newsletterForm);
     return { ok: true, error: null };
   } catch (err) {
     return {
@@ -75,24 +75,24 @@ export const submitConsultationForm = async (prevState, formData) => {
 
     // Basic validations (extend as needed)
     if (!consultationForm.email) {
-      return { ok: false, error: "Email is required" };
+      return { ok: false, error: "Email is required", paystackDetails: "null" };
     }
     if (
       !consultationForm.firstname ||
       !consultationForm.surname ||
       !consultationForm.middlename
     ) {
-      return { ok: false, error: "First, middle and last name required" };
+      return { ok: false, error: "First, middle and last name required", paystackDetails: "null" };
     }
     if (!consultationForm.reservation_date) {
-      return { ok: false, error: "Reservation date/time required" };
+      return { ok: false, error: "Reservation date/time required", paystackDetails: "null" };
     }
     if (!consultationForm.phone || isNaN(consultationForm.phone)) {
       return { ok: false, error: "Phone number is required and must be a valid number" };
     }
 
-    await postData("consultation", consultationForm);
-    return { ok: true, error: null };
+    const response = await postData("/consultation", consultationForm);
+    return { ok: true, error: null, paystackDetails: response };
   } catch (err) {
     return {
       ok: false,
