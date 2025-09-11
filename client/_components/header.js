@@ -25,6 +25,9 @@ export default function Header({ services }) {
           <Link href="/" className="hover:underline">
             Home
           </Link>
+          <Link href="/about" className="hover:underline">
+            About
+          </Link>
           <div className="relative group">
             <Link href="/services" className="hover:underline">
               Services ▾
@@ -43,9 +46,6 @@ export default function Header({ services }) {
           </div>
           <Link href="/projects" className="hover:underline">
             Projects
-          </Link>
-          <Link href="/" className="hover:underline">
-            Plants List
           </Link>
         </div>
 
@@ -82,6 +82,13 @@ export default function Header({ services }) {
               Home
             </Link>
             <Link
+              href="/about"
+              className="hover:underline"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link
               href="/services"
               className="hover:underline"
               onClick={() => setIsMenuOpen(false)}
@@ -94,13 +101,6 @@ export default function Header({ services }) {
               onClick={() => setIsMenuOpen(false)}
             >
               Projects
-            </Link>
-            <Link
-              href="/"
-              className="hover:underline"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Plants List
             </Link>
             <div className="pt-4 border-t border-white/20">
               <p className="text-sm mb-2">(000) 000 - 0000</p>
