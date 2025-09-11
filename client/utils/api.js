@@ -48,7 +48,7 @@ export async function fetchData(endpoint) {
 
 export async function verifyPayment(endpoint){
       try {    
-        const response = await fetch(`http://localhost:4000${endpoint}`);
+        const response = await fetch(`http://localhost:5000${endpoint}`);
         const data = await response.json();
         return {...data, status: response.status}
       } catch (error) {
