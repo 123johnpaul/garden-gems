@@ -1,8 +1,10 @@
 import initDB from "../database/db.js";
 import { sendEmail } from "../services/emailService.js";
 import { validationResult } from "express-validator";
-import { initializePayment,verifyPayment } from "../services/paymentservice.js";
-
+import {
+  initializePayment,
+  verifyPayment,
+} from "../services/paymentservice.js";
 
 export async function scheduleConsultation(req, res) {
   const errors = validationResult(req);
@@ -11,11 +13,20 @@ export async function scheduleConsultation(req, res) {
   }
 
   try {
-    const { firstname, surname, middlename, phone, email, reservation_date } = req.body;
+    const db = await initDB();
+    const service = await db.get(
+      "SELECT price FROM services WHERE id = ?",
+      [req.body.serviceId] // frontend must send selected serviceId
+    );
+
+    let price = service?.price || 10000;
+    
+    const { firstname, surname, middlename, phone, email, reservation_date } =
+      req.body;
 
     const paymentInit = await initializePayment({
       email,
-      amount: 10000,
+      amount: price,
       callback_url: `http://localhost:3000/schedule-consultation/verify?firstname=${firstname}&surname=${surname}&middlename=${middlename}&phone=${phone}&email=${email}&reservation_date=${reservation_date}`,
     });
 
@@ -32,7 +43,15 @@ export async function scheduleConsultation(req, res) {
 
 export async function verifyConsultationPayment(req, res) {
   try {
-    const { reference, firstname, surname, middlename, phone, email, reservation_date } = req.query;
+    const {
+      reference,
+      firstname,
+      surname,
+      middlename,
+      phone,
+      email,
+      reservation_date,
+    } = req.query;
 
     const verification = await verifyPayment(reference);
 
@@ -56,7 +75,9 @@ export async function verifyConsultationPayment(req, res) {
         Garden Gems 🌱`
       );
 
-      return res.status(201).json({ message: "Consultation scheduled successfully after payment" });
+      return res
+        .status(201)
+        .json({ message: "Consultation scheduled successfully after payment" });
     } else {
       return res.status(400).json({ error: "Payment verification failed" });
     }
