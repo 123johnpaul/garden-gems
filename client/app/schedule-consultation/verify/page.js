@@ -53,7 +53,7 @@ export default function VerifyConsultationPayment({searchParams}) {
 
     if (!flatParams.reference) {
           setStatus("success");
-          setMessage(data.message);
+          setMessage("payment verified successfully");
           setTimeout(() => router.push("/"), 3000);
         }
 
