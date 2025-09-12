@@ -137,9 +137,11 @@ export default function Home() {
                 outdoor spaces into breathtaking, picturesque havens.
               </p>
             </div>
+            <Link href="/about">
             <Button className="flex h-14 w-54 items-center justify-center rounded-lg bg-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] text-white">
               More About Us
             </Button>
+            </Link>
           </div>
           <Image
             alt="Man trimming hedges"
@@ -280,9 +282,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex justify-center">
+                <Link href="/projects">
                 <Button className="flex h-14 w-54 items-center justify-center rounded-lg text-[#0C7769] text-center font-bold leading-9 tracking-[-0.01em] bg-white">
                   View All Projects
                 </Button>
+                </Link>
               </div>
             </div>
           </div>
