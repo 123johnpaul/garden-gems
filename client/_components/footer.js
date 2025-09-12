@@ -113,16 +113,17 @@ const Footer = ({ services }) => {
         <div>
           <h3 className="text-lg font-semibold mb-6">Services</h3>
           <ul className="space-y-3 text-gray-300">
-            {services.map((service) => (
-              <li key={service.id}>
-                <Link
-                  href={`/services/${service.id}`}
-                  className="hover:text-teal-400 transition duration-200"
-                >
-                  {service.name}
-                </Link>
-              </li>
-            ))}
+            {services &&
+              (services.map((service) => (
+                <li key={service.id}>
+                  <Link
+                    href={`/services/${service.id}`}
+                    className="hover:text-teal-400 transition duration-200"
+                  >
+                    {service.name}
+                  </Link>
+                </li>
+              )))}
           </ul>
         </div>
 

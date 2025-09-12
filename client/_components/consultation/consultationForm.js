@@ -60,15 +60,15 @@ export default function ConsultationForm({ selectedServiceId = null }) {
         {/* Top row of inputs */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {selectedServiceId && (
-            <input name="id" hidden type="text" value={selectedServiceId} />
+            <input name="id" hidden type="text" defaultValue={selectedServiceId ?? ''} />
           )}
           {!selectedServiceId && (
             <input
               name="id"
               hidden
               type="text"
-              value={
-                services.find((service) => service.name === selectedService)?.id
+              defaultValue={
+                services.find((service) => service.name === selectedService)?.id ?? ''
               }
             />
           )}
