@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <section className="bg-white py-16 px-6 md:px-16">
@@ -17,10 +19,12 @@ export default function About() {
 
         {/* ✅ Story / Mission */}
         <div className="grid md:grid-cols-2 gap-10 items-center mb-16">
-          <img
+          <Image
             src="/assets/PeopleInOffice.png"
             alt="Our team at work"
             className="w-full h-80 object-cover rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-xl"
+            width={200}
+            height={320}
           />
           <div className="transition duration-300 hover:translate-y-1">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
@@ -28,9 +32,9 @@ export default function About() {
             </h3>
             <p className="text-gray-600 leading-relaxed mb-4">
               Founded with a passion for green living, Garden Gems has grown
-              into a trusted name in gardening and landscaping. From small
-              home gardens to large estates, we bring creativity, expertise,
-              and care to every project.
+              into a trusted name in gardening and landscaping. From small home
+              gardens to large estates, we bring creativity, expertise, and care
+              to every project.
             </p>
             <p className="text-gray-600 leading-relaxed">
               Our team blends artistic vision with sustainable practices,

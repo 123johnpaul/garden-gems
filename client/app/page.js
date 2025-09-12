@@ -314,27 +314,7 @@ export default function Home() {
                 alt="A Residential Garden"
                 className="w-full"
               />
-              <p className="font-semibold">Residential Gardens</p>
-            </div>
-            <div>
-              <Image
-                width="auto"
-                height="auto"
-                src={gardenConstruction}
-                alt="A Residential Garden"
-                className="w-full"
-              />
-              <p className="font-semibold">Garden Construction</p>
-            </div>
-            <div>
-              <Image
-                width="auto"
-                height="auto"
-                src={landscapeDesign}
-                alt="A Residential Garden"
-                className="w-full"
-              />
-              <p className="font-semibold">Landscape Design</p>
+              <p className="font-semibold">Commercial Services</p>
             </div>
             <div>
               <Image
@@ -344,7 +324,27 @@ export default function Home() {
                 alt="A Residential Garden"
                 className="w-full"
               />
-              <p className="font-semibold">Commercial Services</p>
+              <p className="font-semibold">Landscape Design</p>
+            </div>
+            <div>
+              <Image
+                width="auto"
+                height="auto"
+                src={landscapeDesign}
+                alt="A Residential Garden"
+                className="w-full"
+              />
+              <p className="font-semibold">Garden Construction</p>
+            </div>
+            <div>
+              <Image
+                width="auto"
+                height="auto"
+                src={gardenConstruction}
+                alt="A Residential Garden"
+                className="w-full"
+              />
+              <p className="font-semibold">Residential Gardens</p>
             </div>
           </div>
         </div>
