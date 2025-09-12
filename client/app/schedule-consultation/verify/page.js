@@ -32,10 +32,10 @@ export default function VerifyConsultationPayment({searchParams}) {
       delete flat._debugInfo;
       delete flat.status;
 
-      // Normalize reference
+      // keep either reference or trxref
       if (!flat.reference && flat.trxref) flat.reference = flat.trxref;
-      // Keep trxref only if you want; otherwise drop
-      delete flat.trxref;
+      // don't delete trxref before assigning
+
 
       return flat;
     };

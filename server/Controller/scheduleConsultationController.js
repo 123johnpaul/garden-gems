@@ -54,45 +54,54 @@ export async function scheduleConsultation(req, res) {
 }
 export async function verifyConsultationPayment(req, res) {
   try {
-    const { reference, firstname, surname, middlename, phone, email, reservation_date } = req.query;
+    const reference = req.query.reference || req.query.trxref;
+    const { value } = req.query;
 
-    console.log('Received query params:', req.query); // This will help debug
 
     if (!reference) {
       return res.status(400).json({ error: "Payment reference is required" });
     }
 
+    // If you stored consultation data in `value`
+    let consultationData = {};
+    if (value) {
+      try {
+        consultationData = JSON.parse(decodeURIComponent(value));
+      } catch (err) {
+        console.warn("Failed to parse value param", err);
+      }
+    }
+
     const verification = await verifyPayment(reference);
 
     if (verification.data.status === "success") {
-      // Save consultation after payment success
       const db = await initDB();
+      const { firstname, surname, middlename, phone, email, reservation_date } = {
+        ...consultationData,
+        ...req.query, // fallback
+      };
+
       await db.query(
         `INSERT INTO consultation (firstname, surname, middlename, phone, email, reservation_date)
          VALUES ($1, $2, $3, $4, $5, $6)`,
         [firstname, surname, middlename, phone, email, reservation_date]
       );
 
-      // Send confirmation email
       await sendEmail(
         email,
         "Garden Gems Consultation",
-        `Hello ${firstname},
-        Your consultation has been successfully scheduled on ${reservation_date}.
-        We'll contact you at ${phone} if we need more details.
-        Thank you,
-        Garden Gems 🌱`
+        `Hello ${firstname}, your consultation has been successfully scheduled on ${reservation_date}.`
       );
 
-      return res.status(201).json({ 
-        status: "success", 
-        message: "Consultation scheduled successfully after payment" 
+      return res.status(201).json({
+        status: "success",
+        message: "Consultation scheduled successfully after payment",
       });
     } else {
       return res.status(400).json({ error: "Payment verification failed" });
     }
   } catch (error) {
-    console.error('Verification error:', error);
+    console.error("Verification error:", error);
     res.status(500).json({ error: "Something went wrong during verification" });
   }
 }
