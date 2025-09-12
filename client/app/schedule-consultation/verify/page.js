@@ -52,8 +52,10 @@ export default function VerifyConsultationPayment({searchParams}) {
     ];
 
     if (!flatParams.reference) {
-      setStatus("success");
-    }
+          setStatus("success");
+          setMessage(data.message);
+          setTimeout(() => router.push("/"), 3000);
+        }
 
     // 2. Build clean query string only with expected keys
     const buildQueryString = (obj) => {
