@@ -65,6 +65,7 @@ export const submitNewsletterForm = async (prevState, formData) => {
 export const submitConsultationForm = async (prevState, formData) => {
   try {
     const consultationForm = {
+      serviceId: validateFormField("id", formData),
       firstname: validateFormField("firstname", formData),
       surname: validateFormField("surname", formData),
       middlename: validateFormField("middlename", formData),
@@ -72,7 +73,7 @@ export const submitConsultationForm = async (prevState, formData) => {
       phone: validateFormField("phone", formData),
       reservation_date: validateFormField("reservation_date", formData),
     };
-
+console.log(consultationForm)
     // Basic validations (extend as needed)
     if (!consultationForm.email) {
       return { ok: false, error: "Email is required", paystackDetails: "null" };

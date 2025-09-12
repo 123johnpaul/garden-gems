@@ -22,7 +22,7 @@ export async function scheduleConsultation(req, res) {
       [req.body.serviceId] // frontend must send selected serviceId
     );
 
-    let price = service?.price || 10000;
+    let price = service || 10000;
     
     const { firstname, surname, middlename, phone, email, reservation_date } =
       req.body;
@@ -30,7 +30,7 @@ export async function scheduleConsultation(req, res) {
     const paymentInit = await initializePayment({
       email,
       amount: price,
-      callback_url: `https://garden-gems.vercel.app/schedule-consultation/verify?firstname=${firstname}&surname=${surname}&middlename=${middlename}&phone=${phone}&email=${email}&reservation_date=${reservation_date}`,
+      callback_url: `http://localhost:3000/schedule-consultation/verify?firstname=${firstname}&surname=${surname}&middlename=${middlename}&phone=${phone}&email=${email}&reservation_date=${reservation_date}`,
     });
 
     return res.status(200).json({

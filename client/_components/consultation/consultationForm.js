@@ -36,28 +36,42 @@ export default function ConsultationForm({ selectedServiceId = null }) {
     }
   }, [state.ok, state.paystackDetails?.authorization_url]);
 
-// Triggers
-useEffect(() => {
-  if (services.length > 0) {
-    if (selectedServiceId) {
-      // For route with selected ID, set the selected service
-      const service = services.find(service => service.id === selectedServiceId);
-      if (service) {
-        setSelectedService(service.name);
+  // Triggers
+  useEffect(() => {
+    if (services.length > 0) {
+      if (selectedServiceId) {
+        // For route with selected ID, set the selected service
+        const service = services.find(
+          (service) => service.id === selectedServiceId
+        );
+        if (service) {
+          setSelectedService(service.name);
+        }
+      } else {
+        // For route without selected ID, set first service as default
+        setSelectedService(services[0].name);
       }
-    } else {
-      // For route without selected ID, set first service as default
-      setSelectedService(services[0].name);
     }
-  }
-}, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
       <form action={formAction} className="space-y-8" ref={formRef}>
         {/* Top row of inputs */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {selectedServiceId && (
+            <input name="id" hidden type="text" value={selectedServiceId} />
+          )}
+          {!selectedServiceId && (
+            <input
+              name="id"
+              hidden
+              type="text"
+              value={
+                services.find((service) => service.name === selectedService)?.id
+              }
+            />
+          )}
           <div className="relative">
             <input
               type="text"
@@ -180,37 +194,36 @@ useEffect(() => {
             </label>
           </div>
           <div className="relative">
-            <label
-              for="price"
-              className="absolute left-0 -top-5  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-[#141414]"
-            >
+            <label className="absolute left-0 -top-5  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-[#141414]">
               Consultation Fee (₦)
             </label>
             {/* For /schedule-consultation/[id] route with selected ID */}
             {selectedServiceId && (
-              <input
+              <p
                 name="price"
                 type="number"
                 readOnly
                 className="border-b-2 border-black w-full"
-                defaultValue={
+              >
+                {
                   services.find((service) => service.id === selectedServiceId)
                     .price
                 }
-              />
+              </p>
             )}
             {/* For /schedule-consultation route with no selected ID */}
             {!selectedServiceId && (
-              <input
+              <p
                 name="price"
                 type="number"
                 readOnly
                 className="border-b-2 border-black w-full"
-                defaultValue={
+              >
+                {
                   services.find((service) => service.name === selectedService)
                     ?.price
                 }
-              />
+              </p>
             )}
           </div>
         </div>
