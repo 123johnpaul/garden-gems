@@ -23,10 +23,23 @@ export async function scheduleConsultation(req, res) {
     
     const { firstname, surname, middlename, phone, email, reservation_date } = req.body;
 
+    // Create a data object with all the consultation details
+    const consultationData = {
+      firstname,
+      surname,
+      middlename,
+      phone,
+      email,
+      reservation_date
+    };
+
+    // Encode the data as JSON in the callback URL
+    const encodedData = encodeURIComponent(JSON.stringify(consultationData));
+
     const paymentInit = await initializePayment({
       email,
       amount: price,
-      callback_url: `https://garden-gems.vercel.app/schedule-consultation/verify?firstname=${firstname}&surname=${surname}&middlename=${middlename}&phone=${phone}&email=${email}&reservation_date=${reservation_date}`,
+      callback_url: `https://garden-gems.vercel.app/schedule-consultation/verify?value=${encodedData}`,
     });
 
     return res.status(200).json({
@@ -39,10 +52,15 @@ export async function scheduleConsultation(req, res) {
     res.status(500).json({ error: "Payment initialization failed" });
   }
 }
-
 export async function verifyConsultationPayment(req, res) {
   try {
     const { reference, firstname, surname, middlename, phone, email, reservation_date } = req.query;
+
+    console.log('Received query params:', req.query); // This will help debug
+
+    if (!reference) {
+      return res.status(400).json({ error: "Payment reference is required" });
+    }
 
     const verification = await verifyPayment(reference);
 
@@ -66,12 +84,15 @@ export async function verifyConsultationPayment(req, res) {
         Garden Gems 🌱`
       );
 
-      return res.status(201).json({ message: "Consultation scheduled successfully after payment" });
+      return res.status(201).json({ 
+        status: "success", 
+        message: "Consultation scheduled successfully after payment" 
+      });
     } else {
       return res.status(400).json({ error: "Payment verification failed" });
     }
   } catch (error) {
-    console.error(error);
+    console.error('Verification error:', error);
     res.status(500).json({ error: "Something went wrong during verification" });
   }
 }
