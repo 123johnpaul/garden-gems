@@ -12,7 +12,7 @@ export async function subscribeNewsletter(req, res) {
     const { email } = req.body;
     const db = await initDB();
 
-    await db.run("INSERT INTO newsletter (email) VALUES (?)", [email]);
+    await db.query("INSERT INTO newsletter (email) VALUES ($1)", [email]);
 
     // Send confirmation email
     await sendEmail(
@@ -24,7 +24,7 @@ export async function subscribeNewsletter(req, res) {
     // Respond back to client
     res.status(201).json({ message: "Subscription successful" });
   } catch (error) {
-    if (error.message.includes("UNIQUE constraint failed")) {
+    if (error.message.includes("duplicate key value violates unique constraint")) {
       return res.status(400).json({ error: "Email already subscribed" });
     }
     console.error(error);

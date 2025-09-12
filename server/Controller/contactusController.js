@@ -2,7 +2,6 @@ import initDB from "../database/db.js";
 import { validationResult } from "express-validator";
 import { sendEmail } from "../services/emailService.js";
 
-
 export async function submitContactUs(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -12,9 +11,10 @@ export async function submitContactUs(req, res) {
   try {
     const { firstname, surname, middlename, email, phone, subject, message } = req.body;
     const db = await initDB();
-    await db.run(
+    
+    await db.query(
       `INSERT INTO contactus (firstname, surname, middlename, email, phone, subject, message)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
+       VALUES ($1, $2, $3, $4, $5, $6, $7)`,
       [firstname, surname, middlename, email, phone, subject, message]
     );
 

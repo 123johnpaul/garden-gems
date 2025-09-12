@@ -1,65 +1,88 @@
-import sqlite3 from "sqlite3";
-import { open } from "sqlite";
+import pg from 'pg';
+const { Pool } = pg;
 
-let db;
+let pool;
 
 async function initDB() {
-  if (!db) {
-    db = await open({
-      filename: "./database/gardengem-db.sqlite",
-      driver: sqlite3.Database,
+  if (!pool) {
+    pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false
+      }
     });
 
-    // Create consultation table
-    await db.exec(`
-      CREATE TABLE IF NOT EXISTS consultation (
-        id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
-        firstname TEXT NOT NULL,
-        surname TEXT NOT NULL,
-        middlename TEXT NOT NULL,
-        email TEXT NOT NULL,
-        phone TEXT NOT NULL,
-        reservation_date TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-      )
-    `);
+    try {
+      // Test connection
+      await pool.query('SELECT NOW()');
+      console.log('✅ PostgreSQL connected successfully');
 
-    // Create Contact us table
-    await db.exec(`
-      CREATE TABLE IF NOT EXISTS contactus (
-        id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
-        firstname TEXT NOT NULL,
-        surname TEXT NOT NULL,
-        middlename TEXT NOT NULL,
-        email TEXT NOT NULL,
-        phone TEXT NOT NULL,
-        subject TEXT NOT NULL,
-        message TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-      )
-    `);
+      // Create consultation table
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS consultation (
+          id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+          firstname VARCHAR(255) NOT NULL,
+          surname VARCHAR(255) NOT NULL,
+          middlename VARCHAR(255),
+          email VARCHAR(255) NOT NULL,
+          phone VARCHAR(20) NOT NULL,
+          reservation_date DATE NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+      `);
 
-    // Create Newsletter table
-    await db.exec(`
-      CREATE TABLE IF NOT EXISTS newsletter (
-        id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
-        email TEXT UNIQUE NOT NULL
-      )
-    `);
-    // services table
-    await db.exec(`
-    CREATE TABLE IF NOT EXISTS services (
-    id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
-    name TEXT UNIQUE,
-    image_path TEXT NOT NULL,
-    description TEXT
-  )
-`)
+      // Create contactus table
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS contactus (
+          id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+          firstname VARCHAR(255) NOT NULL,
+          surname VARCHAR(255) NOT NULL,
+          middlename VARCHAR(255),
+          email VARCHAR(255) NOT NULL,
+          phone VARCHAR(20) NOT NULL,
+          subject VARCHAR(500) NOT NULL,
+          message TEXT NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+      `);
 
+      // Create newsletter table
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS newsletter (
+          id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+          email VARCHAR(255) UNIQUE NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+      `);
 
-    console.log("✅ Database initialized with all tables");
+      // Create services table
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS services (
+          id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+          name VARCHAR(255) UNIQUE NOT NULL,
+          image_path TEXT NOT NULL,
+          description TEXT,
+          price INTEGER DEFAULT 10000,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+      `);
+
+      console.log("✅ Database initialized with all tables");
+    } catch (error) {
+      console.error("❌ Database initialization failed:", error);
+      throw error;
+    }
   }
-  return db;
+  return pool;
 }
+
+// Graceful shutdown
+process.on('SIGINT', async () => {
+  if (pool) {
+    await pool.end();
+    console.log('📊 Database connection closed.');
+  }
+  process.exit(0);
+});
 
 export default initDB;
