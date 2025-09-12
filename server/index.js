@@ -54,7 +54,7 @@ app.get("/debug/data", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
+console.log("okay")
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
