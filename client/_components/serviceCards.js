@@ -3,6 +3,7 @@ import Link from "next/link";
 import { fetchData } from "@/utils/api";
 
 import Button from "./button";
+import { formatNaira } from "@/utils/utils";
 
 export default async function ServiceCards() {
 const services = await fetchData("/services");
@@ -23,6 +24,7 @@ const services = await fetchData("/services");
           <p className="mt-4 text-lg font-medium text-gray-800">
             {service.name}
           </p>
+          <p className="text-black">{formatNaira(service.price)}</p>
           <Link href={`/services/${service.id}`}>
             <Button className="mt-3 px-4 py-2 bg-[#0C7769] text-white text-sm rounded-lg hover:bg-[#095f54] transition duration-200">
               Learn more

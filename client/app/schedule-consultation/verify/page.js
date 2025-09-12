@@ -1,7 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { verifyPayment } from "@/utils/api";
+import { flattenParams } from "@/utils/utils";
 import LoadingSpinner from "@/_components/loadingSpinner";
 
 export default function VerifyConsultationPayment({searchParams}) {
@@ -9,38 +10,12 @@ export default function VerifyConsultationPayment({searchParams}) {
   const [status, setStatus] = useState("verifying");
   const [message, setMessage] = useState("");
 
+  //   asynchronous access of searchParams
+  const params = React.use(searchParams)
+  console.log(params)
+
   useEffect(() => {
-    // 1. Flatten params (extract JSON inside ?value=...)
-    const flattenParams = () => {
-      let flat = { ...searchParams };
-
-      // value holds encoded JSON: %7B"firstname":"Test",...%7D
-      if (flat.value) {
-        try {
-          const decoded = decodeURIComponent(flat.value);
-          // decoded now => {"firstname":"Test",...}
-          const parsed = JSON.parse(decoded);
-          flat = { ...flat, ...parsed };
-        } catch (e) {
-          console.warn("Could not parse value param", e);
-        }
-        delete flat.value;
-      }
-
-      // reason often becomes "[object Object]" - discard
-      delete flat.reason;
-      delete flat._debugInfo;
-      delete flat.status;
-
-      // Normalize reference
-      if (!flat.reference && flat.trxref) flat.reference = flat.trxref;
-      // Keep trxref only if you want; otherwise drop
-      delete flat.trxref;
-
-      return flat;
-    };
-
-    const flatParams = flattenParams();
+    const flatParams = flattenParams(params);
     const requiredKeys = [
       "firstname",
       "middlename",
@@ -89,7 +64,7 @@ export default function VerifyConsultationPayment({searchParams}) {
     };
 
     handlePaymentVerification();
-  }, [searchParams, router]);
+  }, [params, router]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center p-4">
