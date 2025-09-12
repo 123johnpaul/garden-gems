@@ -12,7 +12,6 @@ export default function VerifyConsultationPayment({searchParams}) {
 
   //   asynchronous access of searchParams
   const params = React.use(searchParams)
-  console.log(params)
 
   useEffect(() => {
     const flatParams = flattenParams(params);
@@ -139,7 +138,7 @@ export default function VerifyConsultationPayment({searchParams}) {
               <div className="space-y-3">
                 <button
                   onClick={() => router.push("/schedule-consultation")}
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
+                  className="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-[#0c7769] transition"
                 >
                   Try Again
                 </button>
