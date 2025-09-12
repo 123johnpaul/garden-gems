@@ -10,19 +10,21 @@ async function initDB() {
       driver: sqlite3.Database,
     });
 
-    // Create consultation table
-    await db.exec(`
-      CREATE TABLE IF NOT EXISTS consultation (
-        id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
-        firstname TEXT NOT NULL,
-        surname TEXT NOT NULL,
-        middlename TEXT NOT NULL,
-        email TEXT NOT NULL,
-        phone TEXT NOT NULL,
-        reservation_date TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-      )
-    `);
+      // Create consultation table
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS consultation (
+          id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+          firstname VARCHAR(255) NOT NULL,
+          surname VARCHAR(255) NOT NULL,
+          middlename VARCHAR(255),
+          email VARCHAR(255) NOT NULL,
+          phone VARCHAR(20) NOT NULL,
+          reservation_date TIMESTAMP NOT NULL,
+          reference TEXT UNIQUE,
+          status VARCHAR(20) NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+      `);
 
     // Create Contact us table
     await db.exec(`

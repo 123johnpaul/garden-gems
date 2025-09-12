@@ -1,5 +1,5 @@
 import express from "express";
-import {scheduleConsultation,verifyConsultationPayment} from "../Controller/scheduleConsultationController.js";
+import {scheduleConsultation,verifyConsultationPayment,getLatestConsultation} from "../Controller/scheduleConsultationController.js";
 import {body} from "express-validator"
 
 const router = express.Router();
@@ -42,5 +42,6 @@ router.post("/",[
 ], scheduleConsultation);
 
 router.get("/verify",verifyConsultationPayment)
+router.get("/latest", getLatestConsultation);     // NEW
 
 export default router;

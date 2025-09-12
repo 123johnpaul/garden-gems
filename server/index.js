@@ -7,6 +7,8 @@ import contactusRoutes from "./routes/contactusRoutes.js";
 import servicesroutes from "./routes/servicesRoutes.js"
 import cors from "cors"
 
+
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors())
