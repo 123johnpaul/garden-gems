@@ -1,27 +1,17 @@
-// test-connection.js
-import pg from 'pg';
-import dotenv from 'dotenv';
-dotenv.config();
+// scripts/fixDB.js
+import initDB from "./database/db.js";
 
-const { Pool } = pg;
-
-async function testConnection() {
-  const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
-  });
+async function dropStatusColumn() {
+  const db = await initDB();
 
   try {
-    console.log('Testing connection...');
-    const result = await pool.query('SELECT NOW()');
-    console.log('✅ Connection successful!');
-    console.log('Current time from DB:', result.rows[0].now);
-    await pool.end();
-  } catch (error) {
-    console.error('❌ Connection failed:', error.message);
+    await db.query(`ALTER TABLE consultation DROP COLUMN IF EXISTS status;`);
+    console.log("✅ Column 'status' dropped successfully.");
+  } catch (err) {
+    console.error("❌ Failed to drop column:", err.message);
+  } finally {
+    process.exit(0); // Exit script
   }
 }
 
-testConnection();
+dropStatusColumn();

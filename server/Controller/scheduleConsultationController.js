@@ -39,7 +39,7 @@ export async function scheduleConsultation(req, res) {
     const paymentInit = await initializePayment({
       email,
       amount: price,
-      callback_url: `https://garden-gems.vercel.app/schedule-consultation/verify?value=${encodedData}`,
+      callback_url: `http://localhost:3000/schedule-consultation/verify?value=${encodedData}`,
     });
 
     return res.status(200).json({
@@ -101,7 +101,7 @@ export async function verifyConsultationPayment(req, res) {
       return res.status(400).json({ error: "Payment verification failed" });
     }
   } catch (error) {
-    console.error("Verification error:", error);
+    console.log("Verification error:", error);
     res.status(500).json({ error: "Something went wrong during verification" });
   }
 }

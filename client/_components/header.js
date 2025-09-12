@@ -6,7 +6,7 @@ import Link from "next/link";
 import logo from "@/public/logo.svg";
 import Button from "./button";
 
-export default function Header({ services }) {
+export default function Header({ services=[]}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (

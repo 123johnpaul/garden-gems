@@ -51,7 +51,7 @@ export async function verifyPayment(endpoint){
         const response = await fetch(`${API_BASE_URL}${endpoint}`);
         const data = await response.json();
         return {...data, status: response.status}
-      } catch (error) {
+      } catch (err) {
         throw err.message
       }
 }
