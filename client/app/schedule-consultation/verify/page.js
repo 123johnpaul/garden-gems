@@ -52,9 +52,7 @@ export default function VerifyConsultationPayment({searchParams}) {
     ];
 
     if (!flatParams.reference) {
-      setStatus("error");
-      setMessage("No payment reference found");
-      return;
+      setStatus("success");
     }
 
     // 2. Build clean query string only with expected keys
