@@ -1,6 +1,10 @@
 import { Wix_Madefor_Display } from "next/font/google";
 import "./globals.css";
-import PageLayout from "@/_components/PageLayout";
+
+import Header from "@/_components/header";
+import Footer from "@/_components/footer";
+import { fetchData } from "@/utils/api";
+import { ServicesProvider } from "@/context/ServicesContext";
 
 const wixMadeforDisplay = Wix_Madefor_Display({ subsets: ["latin"] });
 
@@ -9,13 +13,16 @@ export const metadata = {
   description: "Access the finest landscaping services today",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const services = await fetchData("/services");
   return (
     <html lang="en" className="scroll-smooth">
       <body
         className={`${wixMadeforDisplay.className} m-0 p-0 text-amber-200 tracking-[-0.04em]`}
       >
-        <PageLayout>{children}</PageLayout>
+        <Header services={services} />
+        <ServicesProvider services={services}>{children}</ServicesProvider>
+        <Footer services={services} />
       </body>
     </html>
   );

@@ -5,17 +5,22 @@ import { useActionState } from "react";
 import { submitConsultationForm } from "@/utils/actions";
 import LoadingSpinner from "../loadingSpinner";
 import Button from "../button";
+import { useServices } from "@/context/ServicesContext";
 
 const initialState = { ok: false, error: null, paystackDetails: null };
 
-export default function ConsultationForm() {
+export default function ConsultationForm({ selectedServiceId = null }) {
   const formRef = useRef(null);
   const [state, formAction, pending] = useActionState(
     submitConsultationForm,
     initialState
   );
-    const [redirecting, setRedirecting] = useState(false);
+  const [redirecting, setRedirecting] = useState(false);
+  // To manage service value
+  const [selectedService, setSelectedService] = useState();
 
+  // Get Service Values from Global Context
+  const services = useServices();
 
   // When state.ok becomes true show modal and reset form
   useEffect(() => {
@@ -30,6 +35,23 @@ export default function ConsultationForm() {
       return () => clearTimeout(t);
     }
   }, [state.ok, state.paystackDetails?.authorization_url]);
+
+// Triggers
+useEffect(() => {
+  if (services.length > 0) {
+    if (selectedServiceId) {
+      // For route with selected ID, set the selected service
+      const service = services.find(service => service.id === selectedServiceId);
+      if (service) {
+        setSelectedService(service.name);
+      }
+    } else {
+      // For route without selected ID, set first service as default
+      setSelectedService(services[0].name);
+    }
+  }
+}, []); // eslint-disable-line react-hooks/exhaustive-deps
+
 
   return (
     <>
@@ -118,6 +140,7 @@ export default function ConsultationForm() {
               id="reservation_date"
               name="reservation_date"
               className="peer w-full bg-transparent border-b-2 focus:outline-none py-2 transition-colors"
+              min={new Date().toISOString().slice(0, 16)}
             />
             <label
               htmlFor="reservation_date"
@@ -125,6 +148,70 @@ export default function ConsultationForm() {
             >
               Reservation Date & Time
             </label>
+          </div>
+          <div className="relative">
+            <select
+              id="service"
+              name="service"
+              className="w-full h-full border-b-2 border-black"
+              onChange={(e) => setSelectedService(e.target.value)}
+            >
+              {/* For /schedule-consultation/[id] route with selected ID */}
+              {selectedServiceId && (
+                <option selected>
+                  {
+                    services.find((service) => service.id === selectedServiceId)
+                      .name
+                  }
+                </option>
+              )}
+              {/* For /schedule-consultation route with no selected ID */}
+              {!selectedServiceId &&
+                services.map((service) => {
+                  return <option key={service.id}>{service.name}</option>;
+                })}
+            </select>
+
+            <label
+              htmlFor="service"
+              className="absolute left-0 -top-5  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-[#141414]"
+            >
+              Service Selected
+            </label>
+          </div>
+          <div className="relative">
+            <label
+              for="price"
+              className="absolute left-0 -top-5  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-[#141414]"
+            >
+              Consultation Fee (₦)
+            </label>
+            {/* For /schedule-consultation/[id] route with selected ID */}
+            {selectedServiceId && (
+              <input
+                name="price"
+                type="number"
+                readOnly
+                className="border-b-2 border-black w-full"
+                defaultValue={
+                  services.find((service) => service.id === selectedServiceId)
+                    .price
+                }
+              />
+            )}
+            {/* For /schedule-consultation route with no selected ID */}
+            {!selectedServiceId && (
+              <input
+                name="price"
+                type="number"
+                readOnly
+                className="border-b-2 border-black w-full"
+                defaultValue={
+                  services.find((service) => service.name === selectedService)
+                    ?.price
+                }
+              />
+            )}
           </div>
         </div>
 
