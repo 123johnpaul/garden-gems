@@ -55,6 +55,7 @@ export default function VerifyConsultationPayment({searchParams}) {
           setStatus("success");
           setMessage("payment verified successfully");
           setTimeout(() => router.push("/"), 3000);
+          return;
         }
 
     // 2. Build clean query string only with expected keys
