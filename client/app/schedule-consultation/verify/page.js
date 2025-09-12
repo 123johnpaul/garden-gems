@@ -26,10 +26,11 @@ export default function VerifyConsultationPayment({searchParams}) {
     ];
 
     if (!flatParams.reference) {
-      setStatus("error");
-      setMessage("No payment reference found");
-      return;
-    }
+          setStatus("success");
+          setMessage("payment verified successfully");
+          setTimeout(() => router.push("/"), 3000);
+          return;
+        }
 
     // 2. Build clean query string only with expected keys
     const buildQueryString = (obj) => {

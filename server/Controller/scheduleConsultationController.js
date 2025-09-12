@@ -39,7 +39,7 @@ export async function scheduleConsultation(req, res) {
     const paymentInit = await initializePayment({
       email,
       amount: price,
-      callback_url: `http://localhost:3000/schedule-consultation/verify?value=${encodedData}`,
+      callback_url: `https://garden-gems.vercel.app/schedule-consultation/verify?value=${encodedData}`,
     });
 
     return res.status(200).json({
