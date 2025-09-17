@@ -611,10 +611,10 @@ export default function Home() {
             <h2 className="capitalize font-bold text-2xl lg:text-4xl leading-8 md:leading-13">
               Latest News From the Industry
             </h2>
-            <div className="flex items-center justify-center gap-3 border-b-[1.5px] border-b-[#141414]/30 pb-1">
+            <Link href="/blog" className="flex items-center justify-center gap-3 border-b-[1.5px] border-b-[#141414]/30 pb-1 hover:opacity-70 transition-opacity">
               <p className="bold text-lg">View all Blog</p>
               <Arrow />
-            </div>
+            </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
             <BlogPostCard
