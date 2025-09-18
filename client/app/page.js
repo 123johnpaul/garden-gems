@@ -20,7 +20,7 @@ import DeliverooLogo from "@/_components/deliverooLogo";
 import DocuSignLogo from "@/_components/docuSignLogo";
 import VerilyLogo from "@/_components/verilyLogo";
 
-import gardenCleaningImg from "@/public/assets/gardenCleaning.jpg";
+import gardenCleaningImg from "@/public/assets/gardenCleaning.jpeg";
 import manSmiling from "@/public/assets/manSmiling.png";
 import manTrimmingHedges from "@/public/assets/manTrimmingHedges.png";
 import royalPerkResidence from "@/public/assets/royalPerkResidence.jpg";
@@ -625,6 +625,7 @@ export default function Home() {
               width={500}
               height={250}
               className="h-fit"
+              pageUrl="/blog/landscaping-in-a-post-pandemic-world"
             />
             <BlogPostCard
               imageUrl={manWateringGarden}
@@ -634,6 +635,7 @@ export default function Home() {
               width={100}
               height={490}
               className="h-fit md:h-1/2"
+              pageUrl="/blog/which-one-is-best-for-your-yard"
             />
             <BlogPostCard
               imageUrl={womanInGarden}
@@ -643,6 +645,7 @@ export default function Home() {
               width={100}
               height={490}
               className="h-fit"
+              pageUrl="/blog/5-fall-yard-care-and-maintenance-tips"
             />
             <BlogPostCard
               imageUrl={plants}
@@ -652,6 +655,7 @@ export default function Home() {
               width={100}
               height={490}
               className="h-fit md:h-1/2"
+              pageUrl="/blog/5-steps-to-design-the-yard-of-your-dreams"
             />
           </div>
         </div>

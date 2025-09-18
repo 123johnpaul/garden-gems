@@ -14,7 +14,7 @@ import residentialGarden from "@/public/assets/residentialGarden.jpg";
 import gardenConstruction from "@/public/assets/gardenConstruction.jpg";
 import landscapeDesign from "@/public/assets/landscapeDesign.jpg";
 import commercialServices from "@/public/assets/commercialServices.jpg";
-import gardenCleaning from "@/public/assets/gardenCleaning.jpg";
+import gardenCleaning from "@/public/assets/gardenCleaning.jpeg";
 import manWateringGarden from "@/public/assets/manWateringGarden.jpg";
 import peopleInGarden from "@/public/assets/peopleInGarden.jpg";
 import gardenAfter from "@/public/assets/gardenAfter.jpg";

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function BlogPostCard({
   imageUrl,
@@ -8,9 +9,10 @@ export default function BlogPostCard({
   date,
   title,
   className,
+  pageUrl,
 }) {
   return (
-    <div className="max-w-md p-4 bg-[#f9f6f1]">
+    <Link href={pageUrl} className="max-w-md p-4 bg-[#f9f6f1]">
       {/* Image container with blue border */}
         <Image
           src={imageUrl}
@@ -29,6 +31,6 @@ export default function BlogPostCard({
           {title}
         </h2>
       </div>
-    </div>
+    </Link>
   );
 }
