@@ -1,4 +1,6 @@
 import Image from "next/image";
+import peopleInOffice from "@/public/assets/peopleInOffice.png";
+
 
 export default function About() {
   return (
@@ -20,7 +22,7 @@ export default function About() {
         {/* ✅ Story / Mission */}
         <div className="grid md:grid-cols-2 gap-10 items-center mb-16">
           <Image
-            src="/assets/PeopleInOffice.png"
+            src={peopleInOffice}
             alt="Our team at work"
             className="w-full h-80 object-cover rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-xl"
             width={200}
