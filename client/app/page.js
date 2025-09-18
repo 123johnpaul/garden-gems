@@ -13,7 +13,7 @@ import LocationIcon from "@/_components/locationIcon";
 import Dot from "@/_components/dot";
 import OffersCard from "@/_components/offersCard";
 import Arrow from "@/_components/arror";
-import BlogPostCard from "@/_components/blogPostCard";
+import BlogPostCard from "@/_components/homeBlogPostCard";
 import BuildKiteLogo from "@/_components/buildKiteLogo";
 import CorningLogo from "@/_components/corningLogo";
 import DeliverooLogo from "@/_components/deliverooLogo";

@@ -47,6 +47,9 @@ export default function Header({ services=[]}) {
           <Link href="/projects" className="hover:underline">
             Projects
           </Link>
+          <Link href="/blog" className="hover:underline">
+            Blog
+          </Link>
         </div>
 
         {/* Desktop Contact */}
@@ -101,6 +104,13 @@ export default function Header({ services=[]}) {
               onClick={() => setIsMenuOpen(false)}
             >
               Projects
+            </Link>
+            <Link
+              href="/blog"
+              className="hover:underline"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
             </Link>
             <div className="pt-4 border-t border-white/20">
               <p className="text-sm mb-2">(000) 000 - 0000</p>
