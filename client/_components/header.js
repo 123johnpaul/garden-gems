@@ -10,7 +10,7 @@ export default function Header({ services=[]}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="bg-[#0C7769] text-white">
+    <div className="bg-[#0C7769] text-white sticky top-0 w-full z-20">
       <nav className="flex items-center justify-between px-4 md:px-10 py-6">
         {/* Logo */}
         <Link href="/">
