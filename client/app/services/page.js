@@ -2,7 +2,7 @@ import ServiceCards from "@/_components/serviceCards";
 //reboot
 export default function Services() {
   return (
-    <section className="bg-gray-50 py-16 px-6 md:px-16">
+    <section className="bg-[#FAF7F2] py-16 px-6 md:px-16">
       <div className="max-w-7xl mx-auto text-center">
         {/* ✅ Updated Title + Subtitle */}
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">

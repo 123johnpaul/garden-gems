@@ -11,7 +11,7 @@ export default async function ServiceDetailPage({ params }) {
 
   if (!service) {
     return (
-      <div className="text-center py-20">
+      <div className="text-center py-20 h-screen m-auto flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold">
           Sorry, We do not offer this service yet
         </h1>
@@ -26,6 +26,7 @@ export default async function ServiceDetailPage({ params }) {
   }
 
   return (
+    <div className="w-full bg-[#FAF7F2]">
     <section className="max-w-3xl mx-auto py-28 px-6 text-center transition-opacity duration-700">
       <Image
         src={service.image_path}
@@ -43,5 +44,6 @@ export default async function ServiceDetailPage({ params }) {
         </Button>
       </Link>
     </section>
+    </div>
   );
 }

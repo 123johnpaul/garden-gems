@@ -12,7 +12,7 @@ const services = await fetchData("/services");
       {services.map((service) => (
         <div
           key={service.id}
-          className="flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300"
+          className="flex flex-col items-center p-4 bg-[#FAF7F2] rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300"
         >
           <Image
             src={service.image_path}
