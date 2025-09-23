@@ -19,7 +19,7 @@ export default function BookingSection() {
   const yRange = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75, 1],
-    [0, 0, 250, 500, 580]
+    [0, 0, 250, 380, 430]
   );
   const sectionOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
   const sectionY = useTransform(scrollYProgress, [0, 0.25], [40, 0]);

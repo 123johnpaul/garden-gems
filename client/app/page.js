@@ -128,11 +128,10 @@ export default function Home() {
           <div className="flex flex-col items-center md:items-start w-full lg:w-1/2">
             <div className="w-full lg:w-3/4 lg:py-10 flex flex-col gap-5">
               <h2 className="text-2xl lg:text-4xl font-bold leading-8 lg:leading-13">
-                Premier & Award-Winning Landscape Company in the USA
+                Premier & Award-Winning Landscape Company
               </h2>
               <p className="text-sm opacity-60 mb-4 leading-5 lg:leading-6">
-                Welcome to our premier and award-winning Landscape Company in
-                the USA! With a track record of excellence and recognition for
+                Welcome to our premier and award-winning Landscape Company! With a track record of excellence and recognition for
                 our exceptional work, we take immense pride in transforming
                 outdoor spaces into breathtaking, picturesque havens.
               </p>
